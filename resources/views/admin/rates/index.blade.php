@@ -17,7 +17,7 @@
 
     <a href="{{route('admin.rate.create')}}" class="btn btn-primary float-right">
         <i class="fas fa-plus"></i>
-        Создать тариф
+        Добавить
     </a>
 
     <table class="table table-striped">

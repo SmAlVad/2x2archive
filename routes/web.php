@@ -11,16 +11,26 @@
 |
 */
 
-// Admin route
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function (){
-    Route::get('/', 'DashboardController@dashboard')->name('admin.index');
-    Route::resource('/rate', 'RateController', ['as' => 'admin']);
-});
-
-Route::get('/', function () {
-    return view('index');
-});
+// Index route
+Route::get('/', 'IndexController@index')->name('index');
 
 Auth::routes();
+
+// Admin route
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function (){
+
+    // Dashboard
+    Route::get('/', 'DashboardController@dashboard')->name('admin.index');
+
+    // Rates
+    Route::resource('/rate', 'RateController', ['as' => 'admin']);
+
+    // Payment Methods
+    Route::resource('/payment-methods', 'PaymentMethodsController', ['as' => 'admin']);
+    Route::post('/payment-methods/active-on', 'PaymentMethodsController@activeOn')->name('admin.payment-methods.active-on');
+    Route::post('/payment-methods/active-off', 'PaymentMethodsController@activeOff')->name('admin.payment-methods.active-off');
+    Route::post('/payment-methods/upload-image', 'PaymentMethodsController@uploadImage')->name('admin.payment-methods.upload-image');
+});
+
 
 Route::get('/home', 'HomeController@index')->name('home');

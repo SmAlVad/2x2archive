@@ -4,7 +4,7 @@
             <a class="nav-link active" href="{{route('admin.rate.index')}}">Тарифы</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Формы оплаты</a>
+            <a class="nav-link" href="{{route('admin.payment-methods.index')}}">Способы оплаты</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Коды</a>
