@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Admin route
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function (){
+    Route::get('/', 'DashboardController@dashboard')->name('admin.index');
+    Route::resource('/rate', 'RateController', ['as' => 'admin']);
 });
+
+Route::get('/', function () {
+    return view('index');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
