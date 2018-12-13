@@ -22,21 +22,30 @@
 
     <table class="table table-striped">
         <thead>
-        <th>Активен?</th>
-        <th>Название</th>
-        <th>Робокасса</th>
-        <th>Изображение</th>
-        <th>Вкл/Выкл</th>
-        <th>Действия</th>
+            <tr>
+                <th>Активен?</th>
+                <th>Название</th>
+                <th>Робокасса</th>
+                <th>Изображение</th>
+                <th>Вкл/Выкл</th>
+                <th>Действия</th>
+            </tr>
         </thead>
-
         <tbody>
             @forelse($paymentMethods as $method)
                 <tr>
                     @if($method->on_off)
-                        <td class="alert-success">Да</td>
+                        <td>
+                            <div class="alert-success text-center">
+                                ДA
+                            </div>
+                        </td>
                     @else
-                        <td class="alert-danger">Нет</td>
+                        <td>
+                            <div class="alert-danger text-center">
+                                НЕТ
+                            </div>
+                        </td>
                     @endif
 
                     <td>{{ $method->name }}</td>
@@ -76,19 +85,21 @@
                     </td>
                 </tr>
             @empty
-                <td colspan="6" class="text-center">
-                    <h4>Данные отсутствуют</h4>
-                </td>
+                <tr>
+                    <td colspan="6" class="text-center">
+                        <h4>Данные отсутствуют</h4>
+                    </td>
+                </tr>
             @endforelse
         </tbody>
         <tfoot>
-        <tr>
-            <td colspan="6">
-                <ul class="pagination float-right">
-                    {{$paymentMethods->links()}}
-                </ul>
-            </td>
-        </tr>
+            <tr>
+                <td colspan="6">
+                    <ul class="pagination float-right">
+                        {{$paymentMethods->links()}}
+                    </ul>
+                </td>
+            </tr>
         </tfoot>
     </table>
 @endsection

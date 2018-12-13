@@ -46,17 +46,6 @@ class RateController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Rate  $rate
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Rate $rate)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int $id

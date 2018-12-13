@@ -22,19 +22,20 @@
 
     <table class="table table-striped">
         <thead>
-            <th width="45%">Название</th>
-            <th>Кол-во часов</th>
-            <th>Цена ₽</th>
-            <th>Действия</th>
+            <tr>
+                <th>Название</th>
+                <th>Кол-во часов</th>
+                <th>Цена ₽</th>
+                <th>Действия</th>
+            </tr>
         </thead>
-
         <tbody>
             @forelse($rates as $rate)
                 <tr>
                     <td>{{$rate->name}}</td>
-                    <td class="text-center">{{$rate->time}}</td>
-                    <td class="text-center">{{$rate->price}}</td>
-                    <td class="text-right">
+                    <td>{{$rate->time}}</td>
+                    <td>{{$rate->price}}</td>
+                    <td>
                         <form action="{{route('admin.rate.destroy', $rate->id)}}" method="post">
                             @csrf
                             @method('DELETE')
@@ -46,11 +47,14 @@
                     </td>
                 </tr>
             @empty
-                <td colspan="4" class="text-center">
-                    <h4>Данные отсутствуют</h4>
-                </td>
+                <tr>
+                    <td colspan="4" class="text-center">
+                        <h4>Данные отсутствуют</h4>
+                    </td>
+                </tr>
             @endforelse
-            <tfoot>
+        </tbody>
+        <tfoot>
             <tr>
                 <td colspan="4">
                     <ul class="pagination float-right">
@@ -58,7 +62,6 @@
                     </ul>
                 </td>
             </tr>
-            </tfoot>
-        </tbody>
+        </tfoot>
     </table>
 @endsection
