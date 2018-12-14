@@ -1,11 +1,6 @@
 @extends('admin.layouts.app_admin')
 
 @section('content')
-    @component('admin.components.breadcrumb')
-        @slot('title')  Способы оплаты @endslot
-        @slot('parent') Главная @endslot
-        @slot('active') Способы оплыты @endslot
-    @endcomponent
 
     @if($message = Session::get('success'))
 

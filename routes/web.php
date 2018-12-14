@@ -14,10 +14,15 @@
 // Index route
 Route::get('/', 'IndexController@index')->name('index');
 
+// No access
+Route::get('/no-access', function () {
+    return view('noaccess');
+});
+
 Auth::routes();
 
 // Admin route
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function (){
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'role:admin|manager',]], function (){
 
     // Dashboard
     Route::get('/', 'DashboardController@dashboard')->name('admin.index');
@@ -33,6 +38,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
     // Keys
     Route::resource('/key', 'KeyController',['as' => 'admin']);
+
+    // Users
+    Route::resource('/user', 'UserController', ['as' => 'admin']);
+
+    // Roles
+    Route::resource('/roles','RoleController', ['as' => 'admin']);
 });
 
 

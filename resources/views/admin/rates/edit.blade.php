@@ -1,13 +1,8 @@
 @extends('admin.layouts.app_admin')
 
 @section('content')
-    @component('admin.components.breadcrumb')
-        @slot('title') Редактирование тарифа @endslot
-        @slot('parent') Главная @endslot
-        @slot('active') Тарифы @endslot
-    @endcomponent
 
-    @include('admin.rates.partials.errors')
+    @include('admin.partials.errors')
 
     <form action="{{route('admin.rate.update', $rate->id)}}" method="post">
         <input type="hidden" name="_method" value="put">

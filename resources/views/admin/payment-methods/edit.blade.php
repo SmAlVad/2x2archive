@@ -1,13 +1,8 @@
 @extends('admin.layouts.app_admin')
 
 @section('content')
-    @component('admin.components.breadcrumb')
-        @slot('title') Редактирование способа оплаты @endslot
-        @slot('parent') Главная @endslot
-        @slot('active') Способы оплаты @endslot
-    @endcomponent
 
-    @include('admin.rates.partials.errors')
+    @include('admin.partials.errors')
 
     <form action="{{route('admin.payment-methods.update', $paymentMethod->id)}}" method="post">
         <input type="hidden" name="_method" value="put">

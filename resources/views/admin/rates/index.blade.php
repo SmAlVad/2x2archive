@@ -1,11 +1,6 @@
 @extends('admin.layouts.app_admin')
 
 @section('content')
-    @component('admin.components.breadcrumb')
-        @slot('title') Список тарифов @endslot
-        @slot('parent') Главная @endslot
-        @slot('active') Тарифы @endslot
-    @endcomponent
 
     @if($message = Session::get('success'))
 

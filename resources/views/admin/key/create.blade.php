@@ -1,13 +1,8 @@
 @extends('admin.layouts.app_admin')
 
 @section('content')
-    @component('admin.components.breadcrumb')
-        @slot('title') Создание ключа @endslot
-        @slot('parent') Главная @endslot
-        @slot('active') Ключи @endslot
-    @endcomponent
 
-    @include('admin.rates.partials.errors')
+    @include('admin.partials.errors')
 
     <form action="{{route('admin.key.store')}}" method="post">
         @csrf

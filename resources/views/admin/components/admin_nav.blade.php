@@ -10,7 +10,12 @@
             <a class="nav-link" href="{{ route('admin.key.index') }}">Ключи</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Пользователи</a>
+            <a class="nav-link" href="{{ route('admin.user.index') }}">Пользователи</a>
         </li>
+        @can('role-list')
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.roles.index') }}">Роли</a>
+            </li>
+        @endcan
     </ul>
 </div>

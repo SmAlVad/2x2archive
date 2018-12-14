@@ -1,13 +1,8 @@
 @extends('admin.layouts.app_admin')
 
 @section('content')
-    @component('admin.components.breadcrumb')
-        @slot('title') Добавление способа оплаты @endslot
-        @slot('parent') Главная @endslot
-        @slot('active') Способы оплаты @endslot
-    @endcomponent
 
-    @include('admin.rates.partials.errors')
+    @include('admin.partials.errors')
     @include('admin.payment-methods.partials.upload-file')
     
     @isset($path)

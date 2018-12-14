@@ -70,9 +70,8 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2">
-                @component('admin.components.admin_nav')
-                @endcomponent
+            <div class="col-2 border-right">
+                @component('admin.components.admin_nav')@endcomponent
             </div>
             <div class="col-10">
                 @yield('content')
