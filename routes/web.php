@@ -42,6 +42,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     // Users
     Route::resource('/user', 'UserController', ['as' => 'admin']);
 
+    // Csfd import
+    Route::get('/csfd', 'CsfdController@index')->name('admin-csfd-index');
+    Route::patch('/csfd/add', 'CsfdController@add')->name('admin-csfd-add');
+
+    // Advert table list
+    Route::get('/advert', 'AdvertController@index')->name('admin-advert');
+
     // Roles
     Route::resource('/roles','RoleController', ['as' => 'admin']);
 });
