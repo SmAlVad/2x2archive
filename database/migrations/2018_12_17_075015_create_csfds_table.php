@@ -20,11 +20,11 @@ class CreateCsfdsTable extends Migration
             $table->string('city')->comment('Город');
             // Категории вложены Недвижемость/Продаю/Квартиру
             // Здесь первый уровень это Недважемость
-            $table->string('cat1')->comment('Категория 1-го уровня');
+            $table->integer('cat1')->unsigned()->comment('Категория 1-го уровня');
             // Второй уровень Продаю
-            $table->string('cat2')->comment('Категория 2-го уровня');
+            $table->integer('cat2')->unsigned()->comment('Категория 2-го уровня');
             // Третий уровень Квартиру
-            $table->string('cat3')->nullable()->comment('Категория 3-го уровня');
+            $table->integer('cat3')->unsigned()->comment('Категория 3-го уровня');
             $table->string('title')->comment('Заголовок');
             $table->text('body')->comment('Тело обьявления');
             $table->string('tags')->comment('Тэги');

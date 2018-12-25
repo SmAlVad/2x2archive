@@ -53,5 +53,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::resource('/roles','RoleController', ['as' => 'admin']);
 });
 
+// Страницы обьявлений
+Route::group(['prefix' => 'advert', 'middleware' => ['auth']], function () {
+    Route::get('/', 'AdvertController@index')->name('advert-index');
+    Route::get('section/{section_id}/type/{type_id}', 'AdvertController@page')->name('advert-page');
+    Route::get('section/{section_id}/type/{type_id}/search', 'AdvertController@search')->name('advert-search');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');

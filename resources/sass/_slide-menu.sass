@@ -1,0 +1,51 @@
+.right-slide-menu-btn
+  color: #92a8d1
+  font-size: 2rem
+  i
+    &:hover
+      cursor: pointer
+
+.sidenav
+  height: 100%
+  width: 0
+  position: fixed
+  z-index: 1
+  top: 0
+  right: 0
+  background-color: #b2b2b2
+  overflow-x: hidden
+  padding-top: 60px
+  transition: 0.3s
+
+  a
+    padding: 8px 8px 8px 2px
+    text-decoration: none
+    color: white
+    display: block
+    transition: 0.3s
+    &:hover
+      color: #034f84
+
+  .closebtn
+    position: absolute
+    top: 0
+    right: 25px
+    font-size: 36px
+    margin-left: 50px
+    padding: 0
+
+.slide-types
+  list-style-type: none
+  li
+    margin-left: -20px
+    a
+      color: $dark
+
+
+
+@media screen and (max-height: 450px)
+  .sidenav
+    padding-top: 15px
+    a
+      font-size: 18px
+ 

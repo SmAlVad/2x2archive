@@ -7,6 +7,23 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Купить ключ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('advert-index') }}">Обьявления</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Газета</a>
+                </li>
+            </ul>
+        </div>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
