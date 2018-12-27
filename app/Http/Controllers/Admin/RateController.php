@@ -68,16 +68,16 @@ class RateController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
-            'time' => 'required',
+            'name'  => 'required',
+            'time'  => 'required',
             'price' => 'required',
         ]);
 
         $rate = Rate::find($id);
 
-        $rate->name = $request->get('name');
-        $rate->time = $request->get('time');
-        $rate->price = $request->get('price');
+        $rate->name     = $request->get('name');
+        $rate->time     = $request->get('time');
+        $rate->price    = $request->get('price');
         $rate->save();
 
         return redirect()

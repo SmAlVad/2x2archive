@@ -6,8 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\Csfd;
 use App\Models\Category;
 
+/**
+ * Class AdvertController
+ * @package App\Http\Controllers
+ */
 class AdvertController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         return view('advert.index', [
@@ -15,27 +22,37 @@ class AdvertController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function page(Request $request)
     {
-        $section = Category::where('id', $request->section_id)->first();
-        $type = Category::where('id', $request->type_id)->first();
-        $subsections = Category::where('parent_id', $request->type_id)->get();
+        $section        = Category::where('id', $request->section_id)->first();
+        $type           = Category::where('id', $request->type_id)->first();
+        $subsections    = Category::where('parent_id', $request->type_id)->get();
 
-        $adverts = Csfd::where('cat1', $request->section_id)->where('cat2', $request->type_id)->paginate(15);
+        $adverts        = Csfd::where('cat1', $request->section_id)->where('cat2', $request->type_id)->paginate(15);
 
         return view('advert.page', [
-            'section' => $section,
-            'type' => $type,
-            'subsections' => $subsections,
-            'selected_subsection' => 0,
-            'adverts' => $adverts
+            'section'               => $section,
+            'type'                  => $type,
+            'subsections'           => $subsections,
+            'selected_subsection'   => 0,
+            'adverts'               => $adverts
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param $section_id
+     * @param $type_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function search(Request $request, $section_id, $type_id)
     {
-        $section = Category::where('id', $section_id)->first();
-        $type = Category::where('id', $type_id)->first();
+        $section    = Category::where('id', $section_id)->first();
+        $type       = Category::where('id', $type_id)->first();
 
         $subsection = $request->input('subsection');
 
@@ -47,11 +64,11 @@ class AdvertController extends Controller
         $subsections = Category::where('parent_id', $type_id)->get();
 
         return view('advert.page', [
-            'section' => $section,
-            'type' => $type,
-            'subsections' => $subsections,
-            'selected_subsection' => $subsection,
-            'adverts' => $adverts
+            'section'               => $section,
+            'type'                  => $type,
+            'subsections'           => $subsections,
+            'selected_subsection'   => $subsection,
+            'adverts'               => $adverts
         ]);
     }
 }

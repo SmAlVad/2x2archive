@@ -6,19 +6,30 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Csfd;
 
+/**
+ * Class CsfdController
+ * @package App\Http\Controllers\Admin
+ */
 class CsfdController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         return view('admin.csfd.index');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function add(Request $request)
     {
-        $counter = 0;
-        $filePath = $request->file('json')->getRealPath();
-        $json = file_get_contents($filePath);
-        $data = json_decode($json);
+        $counter    = 0;
+        $filePath   = $request->file('json')->getRealPath();
+        $json       = file_get_contents($filePath);
+        $data       = json_decode($json);
 
         foreach ($data as $item) {
 

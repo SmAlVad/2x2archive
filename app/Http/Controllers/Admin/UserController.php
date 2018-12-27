@@ -45,16 +45,16 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'roles' => ['required']
+            'name'          => ['required', 'string', 'max:255'],
+            'email'         => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password'      => ['required', 'string', 'min:6', 'confirmed'],
+            'roles'         => ['required']
         ]);
 
         $user = User::create([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => bcrypt($request->get('password'))
+            'name'      => $request->get('name'),
+            'email'     => $request->get('email'),
+            'password'  => bcrypt($request->get('password'))
         ]);
 
         $user->assignRole($request->input('roles'));
@@ -72,10 +72,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $user       = User::find($id);
 
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
+        $roles      = Role::pluck('name','name')->all();
+        $userRole   = $user->roles->pluck('name','name')->all();
 
         return view('admin.users.edit', compact('user', 'roles', 'userRole'));
     }
@@ -92,13 +92,13 @@ class UserController extends Controller
         $user = User::find($id);
 
         $validator = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', \Illuminate\Validation\Rule::unique('users')->ignore($id)],
-            'password' => ['nullable', 'string', 'min:6', 'confirmed'],
+            'name'      => ['required', 'string', 'max:255'],
+            'email'     => ['required', 'string', 'email', 'max:255', \Illuminate\Validation\Rule::unique('users')->ignore($id)],
+            'password'  => ['nullable', 'string', 'min:6', 'confirmed'],
         ]);
 
-        $user->name = $request->get('name');
-        $user->email = $request->get('email');
+        $user->name     = $request->get('name');
+        $user->email    = $request->get('email');
         $request->get('password') == null ?: $user->password = bcrypt($request->get('password'));
         $user->save();
 

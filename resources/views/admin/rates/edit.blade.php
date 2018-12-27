@@ -4,6 +4,8 @@
 
     @include('admin.partials.errors')
 
+    <h3>Изменение тарифа</h3>
+
     <form action="{{route('admin.rate.update', $rate->id)}}" method="post">
         <input type="hidden" name="_method" value="put">
 
@@ -25,6 +27,6 @@
             <input type="text" class="form-control" id="input-price" name="price" value="{{$rate->price}}" required>
         </div>
 
-        <button type="submit" class="btn btn-primary float-right">Редактировать</button>
+        <button type="submit" class="btn btn-primary float-right">Изменить</button>
     </form>
 @endsection

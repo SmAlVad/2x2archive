@@ -30,6 +30,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     // Rates
     Route::resource('/rate', 'RateController', ['as' => 'admin']);
 
+    // Projects
+    Route::resource('/project', 'ProjectController', ['as' => 'admin']);
+
+    // Upload PDF files
+    Route::resource('/pdf', 'PdfController', ['as' => 'admin']);
+
     // Payment Methods
     Route::resource('/payment-methods', 'PaymentMethodsController', ['as' => 'admin']);
     Route::post('/payment-methods/active-on', 'PaymentMethodsController@activeOn')->name('admin.payment-methods.active-on');
@@ -58,6 +64,13 @@ Route::group(['prefix' => 'advert', 'middleware' => ['auth']], function () {
     Route::get('/', 'AdvertController@index')->name('advert-index');
     Route::get('section/{section_id}/type/{type_id}', 'AdvertController@page')->name('advert-page');
     Route::get('section/{section_id}/type/{type_id}/search', 'AdvertController@search')->name('advert-search');
+});
+
+// Страницы газет
+Route::group(['prefix' => 'paper', 'middleware' => ['auth']], function () {
+    Route::get('/', 'PaperController@index')->name('paper-index');
+    Route::get('/search', 'PaperController@search')->name('paper-search');
+    Route::get('/show/{id}', 'PaperController@show')->name('paper-show');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -19,7 +19,7 @@
                     <a class="nav-link" href="{{ route('advert-index') }}">Обьявления</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Газета</a>
+                    <a class="nav-link" href="{{ route('paper-index') }}">Газета</a>
                 </li>
             </ul>
         </div>

@@ -4,6 +4,12 @@
             <a class="nav-link active" href="{{ route('admin.rate.index') }}">Тарифы</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link active" href="{{ route('admin.project.index') }}">Проекты</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="{{ route('admin.pdf.index') }}">PDF</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.payment-methods.index') }}">Способы оплаты</a>
         </li>
         <li class="nav-item">

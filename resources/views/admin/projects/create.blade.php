@@ -4,9 +4,8 @@
 
     @include('admin.partials.errors')
 
-    <h3>Добавление тарифа</h3>
-
-    <form action="{{route('admin.rate.store')}}" method="post">
+    <h3>Добавление проекта</h3>
+    <form action="{{route('admin.project.store')}}" method="post">
         @csrf
 
         <div class="form-group">
@@ -15,13 +14,8 @@
         </div>
 
         <div class="form-group">
-            <label for="input-time">Количество часов</label>
-            <input type="text" class="form-control" id="input-time" name="time" required>
-        </div>
-
-        <div class="form-group">
-            <label for="input-time">Цена ₽</label>
-            <input type="text" class="form-control" id="input-price" name="price" required>
+            <label for="input-time">Сортировка</label>
+            <input type="text" class="form-control" id="input-time" name="sort" value="0">
         </div>
 
         <button type="submit" class="btn btn-primary float-right">Добавить</button>

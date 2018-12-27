@@ -9,6 +9,7 @@
 /nbproject
 /.vagrant
 /public/image
+/public/origin_pdf
 
 #Files
 Homestead.json

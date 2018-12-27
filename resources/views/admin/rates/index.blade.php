@@ -15,6 +15,8 @@
         Добавить
     </a>
 
+    <h3>Список тарифов</h3>
+
     <table class="table table-striped">
         <thead>
             <tr>

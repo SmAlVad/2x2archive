@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Rate
+ * @package App\Models
+ */
 class Rate extends Model
 {
     protected $fillable = ['name', 'time', 'price'];

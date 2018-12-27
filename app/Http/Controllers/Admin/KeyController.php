@@ -65,10 +65,10 @@ class KeyController extends Controller
             $randomInt = $key->generateKey();
         }
 
-        $key->key = $randomInt;
-        $key->rate_id = $request->rate_id;
-        $key->user_id = $request->user_id;
-        $key->created_by = $request->user()->name;
+        $key->key           = $randomInt;
+        $key->rate_id       = $request->rate_id;
+        $key->user_id       = $request->user_id;
+        $key->created_by    = $request->user()->name;
 
         $key->save();
 

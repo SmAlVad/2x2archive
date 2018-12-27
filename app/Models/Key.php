@@ -4,15 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Key
+ * @package App\Models
+ */
 class Key extends Model
 {
     protected $fillable = ['key', 'rate_id', 'user_id', 'active', 'created_by'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function rate()
     {
         return $this->belongsTo('\App\Models\Rate', 'rate_id', 'id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo('\App\Models\User', 'user_id', 'id');

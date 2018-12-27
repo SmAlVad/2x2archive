@@ -68,16 +68,16 @@ class PaymentMethodsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
+            'name'      => 'required',
             'robokassa' => 'required',
         ]);
 
         $paymentMethod = PaymentMethod::find($id);
 
-        $paymentMethod->name = $request->get('name');
-        $paymentMethod->robokassa = $request->get('robokassa');
-        $paymentMethod->image = $request->get('image');
-        $paymentMethod->on_off = $request->get('on_off');
+        $paymentMethod->name        = $request->get('name');
+        $paymentMethod->robokassa   = $request->get('robokassa');
+        $paymentMethod->image       = $request->get('image');
+        $paymentMethod->on_off      = $request->get('on_off');
         $paymentMethod->save();
 
         return redirect()
@@ -109,8 +109,8 @@ class PaymentMethodsController extends Controller
      */
     public function activeOn()
     {
-        $id = $_POST['id'];
-        $paymentMethod = PaymentMethod::find($id);
+        $id             = $_POST['id'];
+        $paymentMethod  = PaymentMethod::find($id);
 
         $paymentMethod->on_off = 1;
         $paymentMethod->save();
@@ -127,8 +127,8 @@ class PaymentMethodsController extends Controller
      */
     public function activeOff()
     {
-        $id = $_POST['id'];
-        $paymentMethod = PaymentMethod::find($id);
+        $id             = $_POST['id'];
+        $paymentMethod  = PaymentMethod::find($id);
 
         $paymentMethod->on_off = 0;
         $paymentMethod->save();
