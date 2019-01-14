@@ -45,6 +45,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     // Keys
     Route::resource('/key', 'KeyController',['as' => 'admin']);
 
+    // Accounts
+    Route::get('/accounts', 'AccountController@index')->name('admin.accounts.index');
+    Route::patch('/accounts/activate/{id}', 'AccountController@activate')->name('admin.accounts.activate');
+    Route::patch('/accounts/cancel/{id}', 'AccountController@cancelled')->name('admin.accounts.cancelled');
+    Route::get('/accounts/print_acc/{id}', 'AccountController@print_acc')->name('admin.accounts.print_acc');
+    Route::get('/accounts/print_act/{id}', 'AccountController@print_act')->name('admin.accounts.print_act');
+    Route::get('/accounts/search', 'AccountController@search')->name('admin.accounts.search');
+
     // Users
     Route::resource('/user', 'UserController', ['as' => 'admin']);
 
@@ -72,5 +80,16 @@ Route::group(['prefix' => 'paper', 'middleware' => ['auth']], function () {
     Route::get('/search', 'PaperController@search')->name('paper-search');
     Route::get('/show/{id}', 'PaperController@show')->name('paper-show');
 });
+
+// Страницы покупки ключа
+Route::group(['prefix' => 'payment'], function () {
+    Route::get('/', 'PaymentController@index')->name('payment-index');
+    Route::get('/confirm', 'PaymentController@confirm')->name('payment-confirm');
+    Route::post('/bill', 'PaymentController@bill')->name('payment-bill');
+    Route::post('/result', 'PaymentController@result')->name('payment-result');
+    Route::post('/success', 'PaymentController@success')->name('payment-success');
+    Route::post('/fail', 'PaymentController@fail')->name('payment-fail');
+});
+
 
 Route::get('/home', 'HomeController@index')->name('home');

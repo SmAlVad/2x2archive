@@ -24,6 +24,9 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('admin-advert') }}">Список обьявлений</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.accounts.index') }}">Счета</a>
+        </li>
         @can('role-list')
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.roles.index') }}">Роли</a>

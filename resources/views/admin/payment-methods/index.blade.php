@@ -14,13 +14,18 @@
         <i class="fas fa-plus"></i>
         Добавить
     </a>
+    <h3>Список способов оплаты</h3>
+
+    <a href="https://auth.robokassa.ru/Merchant/WebService/Service.asmx/GetCurrencies?MerchantLogin=gazeta.2x2.su&Language=ru">XML
+        Робокасса</a>
 
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>Активен?</th>
                 <th>Название</th>
-                <th>Робокасса</th>
+                <th>Label</th>
+                <th>Alias</th>
                 <th>Изображение</th>
                 <th>Вкл/Выкл</th>
                 <th>Действия</th>
@@ -44,10 +49,11 @@
                     @endif
 
                     <td>{{ $method->name }}</td>
-                    <td>{{ $method->robokassa }}</td>
+                    <td>{{ $method->rk_label }}</td>
+                    <td>{{ $method->rk_alias }}</td>
                     <td>
                         @if($method->image)
-                            <img width="100px" src="{{asset('/storage/' . $method->image)}}">
+                            <img width="100px" src="{{asset('/storage/payment-methods/' . $method->image)}}">
                         @else
                             Нет изображения
                         @endif
@@ -75,7 +81,7 @@
                             @method('DELETE')
                             <a class="btn btn-success" href="{{ route('admin.payment-methods.edit', $method) }}"><i class="fas fa-edit"></i></a>
 
-                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены?')"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>
                 </tr>

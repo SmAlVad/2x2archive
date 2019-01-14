@@ -33,12 +33,33 @@ class PaymentMethodsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        PaymentMethod::create($request->all());
+        $this->validate($request, [
+            'image'     => 'required',
+            'name'      => 'required',
+            'rk-label'  => 'required',
+            'rk-alias'  => 'required'
+        ]);
+
+        $rkLabel    = $request->get('rk-label');
+        $rkAlias    = $request->get('rk-alias');
+        $time       = time();
+
+        $extension          = $request->file('image')->getClientOriginalExtension();
+        $fileNameToStore    = "{$rkLabel}_{$rkAlias}_{$time}.{$extension}";
+        $request->file('image')->storeAs('public/payment-methods', $fileNameToStore);
+
+        $pM             = new PaymentMethod();
+        $pM->name       = $request->get('name');
+        $pM->rk_label   = $rkLabel;
+        $pM->rk_alias   = $rkAlias;
+        $pM->image      = $fileNameToStore;
+        $pM->on_off     = $request->get('on-off');
+        $pM->save();
 
         return redirect()
             ->route('admin.payment-methods.index')
@@ -61,7 +82,7 @@ class PaymentMethodsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
@@ -69,16 +90,29 @@ class PaymentMethodsController extends Controller
     {
         $request->validate([
             'name'      => 'required',
-            'robokassa' => 'required',
+            'rk-label'  => 'required',
+            'rk-alias'  => 'required',
         ]);
 
-        $paymentMethod = PaymentMethod::find($id);
+        $rkLabel = $request->get('rk-label');
+        $rkAlias = $request->get('rk-alias');
 
-        $paymentMethod->name        = $request->get('name');
-        $paymentMethod->robokassa   = $request->get('robokassa');
-        $paymentMethod->image       = $request->get('image');
-        $paymentMethod->on_off      = $request->get('on_off');
-        $paymentMethod->save();
+        if ($request->hasFile('image')) {
+            $time               = time();
+            $extension          = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore    = "{$rkLabel}_{$rkAlias}_{$time}.{$extension}";
+            $request->file('image')->storeAs('public/payment-methods', $fileNameToStore);
+        }
+
+        $pM             = PaymentMethod::find($id);
+        $pM->name       = $request->get('name');
+        $pM->rk_label   = $rkLabel;
+        $pM->rk_alias   = $rkAlias;
+        if ($request->hasFile('image')) {
+            $pM->image = $fileNameToStore;
+        }
+        $pM->on_off     = $request->get('on-off');
+        $pM->save();
 
         return redirect()
             ->route('admin.payment-methods.index')
@@ -107,10 +141,10 @@ class PaymentMethodsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function activeOn()
+    public function activeOn(Request $request)
     {
-        $id             = $_POST['id'];
-        $paymentMethod  = PaymentMethod::find($id);
+        $id = $request->get('id');
+        $paymentMethod = PaymentMethod::find($id);
 
         $paymentMethod->on_off = 1;
         $paymentMethod->save();
@@ -125,10 +159,10 @@ class PaymentMethodsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function activeOff()
+    public function activeOff(Request $request)
     {
-        $id             = $_POST['id'];
-        $paymentMethod  = PaymentMethod::find($id);
+        $id = $request->get('id');
+        $paymentMethod = PaymentMethod::find($id);
 
         $paymentMethod->on_off = 0;
         $paymentMethod->save();
@@ -136,18 +170,5 @@ class PaymentMethodsController extends Controller
         return redirect()
             ->route('admin.payment-methods.index')
             ->with('success', 'Способ оплаты отключен');
-    }
-
-    /**
-     * Загружает фаил с изображением логотипа способа плотежа
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function uploadImage(Request $request)
-    {
-       $path = $request->file('image')->store('payment-methods', 'public');
-
-       return view('admin.payment-methods.create', compact('path'));
     }
 }

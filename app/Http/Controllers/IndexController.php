@@ -16,12 +16,6 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('index', [
-            'rates'            => Rate::all(),
-        ]);
-    }
-
-    public function confirm(Request $request){
-        return view();
+        return view('index');
     }
 }

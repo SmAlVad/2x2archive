@@ -16,7 +16,8 @@ class CreatePaymentMethodsTable extends Migration
         Schema::create('payment_methods', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('robokassa');
+            $table->string('rk_label')->comment('Label способа оплаты');
+            $table->string('rk_alias')->comment('Alias способа оплаты');
             $table->string('image')->nullable();
             $table->boolean('on_off')->default(1);
             $table->timestamps();

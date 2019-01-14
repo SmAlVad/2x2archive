@@ -3,37 +3,44 @@
 @section('content')
 
     @include('admin.partials.errors')
+    <h3>Изменение способа оплаты</h3>
 
-    <form action="{{route('admin.payment-methods.update', $paymentMethod->id)}}" method="post">
-        <input type="hidden" name="_method" value="put">
-
-        @csrf
-        @method('PUT')
-
-        <div class="form-group">
-            <label for="input-name">Название</label>
-            <input type="text" class="form-control" id="input-name" name="name" value="{{$paymentMethod->name}}" required>
+    {!! Form::open(['route' => ['admin.payment-methods.update', $paymentMethod->id], 'method' => 'PATCH', 'enctype' => 'multipart/form-data']) !!}
+    <div class="input-group" style="display: block;">
+        <div class="alert alert-primary" role="alert">
+            Если фаил не выбран то остается старый
         </div>
-
-        <div class="form-group">
-            <label for="input-time">Робокасса</label>
-            <input type="text" class="form-control" id="input-time" name="robokassa" value="{{$paymentMethod->robokassa}}" required>
+        <div class="custom-file">
+            {!! Form::file('image') !!}
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="input-time">Изображение</label>
-            <input type="text" class="form-control" id="input-price" name="image" value="{{$paymentMethod->image}}">
-        </div>
+    <div class="form-group">
+        <label for="input-name">Название</label>
+        <input type="text" class="form-control" id="input-name" name="name" value="{{$paymentMethod->name}}" required>
+    </div>
 
-        <div class="form-group">
-            <label for="input-on-off">Вкл/Выкл</label>
-            <select id="input-on-off" class="form-control" name="on_off">
-                <option @if($paymentMethod->on_off ==1) selected @endif value="1">Да</option>
+    <div class="form-group">
+        <label for="input-rk-label">Label</label>
+        <input type="text" class="form-control" id="input-rk-label" name="rk-label" value="{{$paymentMethod->rk_label}}"
+               required>
+    </div>
 
-                <option @if($paymentMethod->on_off ==0) selected @endif value="0">Нет</option>
-            </select>
-        </div>
+    <div class="form-group">
+        <label for="input-rk-alias">Alias</label>
+        <input type="text" class="form-control" id="input-rk-alias" name="rk-alias" value="{{$paymentMethod->rk_alias}}"
+               required>
+    </div>
 
-        <button type="submit" class="btn btn-primary float-right">Редактировать</button>
-    </form>
+    <div class="form-group">
+        <label for="input-on-off">Вкл/Выкл</label>
+        <select id="input-on-off" class="form-control" name="on-off">
+            <option @if($paymentMethod->on_off ==1) selected @endif value="1">Да</option>
+
+            <option @if($paymentMethod->on_off ==0) selected @endif value="0">Нет</option>
+        </select>
+    </div>
+
+    {!! Form::submit('Изменить', ['class' => 'btn btn-primary']); !!}
+    {!! Form::close() !!}
 @endsection

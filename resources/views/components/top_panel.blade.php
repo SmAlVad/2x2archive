@@ -9,11 +9,8 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Главная</a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Купить ключ</a>
+                    <a class="nav-link" href="{{ route('payment-index') }}">Купить ключ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('advert-index') }}">Обьявления</a>
