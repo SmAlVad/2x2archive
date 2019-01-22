@@ -100,7 +100,7 @@ class Account extends Model
             'MrchLogin'         => $login,
             'OutSum'            => $sum,
             'InvId'             => $account_id,
-            'Desc'              => "Описание",
+            'Desc'              => "Покупка подписки на сайте archive.2x2.su",
             'SignatureValue'    => md5("$login:$sum:$account_id:$receipt:$pass1:Shp_item=$rate_id:Shp_user=$user_id"),
             'IncCurrLabel'      => $payment_alias,
             'Culture'           => 'ru',

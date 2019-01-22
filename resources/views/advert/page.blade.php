@@ -75,7 +75,7 @@
         </div>
     </div>
 
-    @component('components.right_slide_menu')@endcomponent
+    @include('partials.right_slide_menu')
 
     <script>
         function openNav() {

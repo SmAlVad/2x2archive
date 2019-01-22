@@ -12,7 +12,7 @@ class AccountController extends Controller
     public function index()
     {
         return view('admin.account.index', [
-            'accounts' => Account::paginate(10),
+            'accounts' => Account::orderBy('id', 'DESK')->paginate(10),
         ]);
     }
 

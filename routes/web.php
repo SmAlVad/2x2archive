@@ -11,17 +11,25 @@
 |
 */
 
-// Index route
+// Главная страница
 Route::get('/', 'IndexController@index')->name('index');
 
-// No access
+// Домашняя страница пользователя
+Route::group(['prefix'=>'home'], function () {
+    // Добавление времени
+    Route::post('/et_time', 'HomeController@setTime')->name('set-time');
+    Route::get('/', 'HomeController@index')->name('home');
+});
+
+// Страница отказа в доступе
 Route::get('/no-access', function () {
     return view('noaccess');
 });
 
+// Авторизация, регистрация и т.д.
 Auth::routes();
 
-// Admin route
+// Админка сайта
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'role:admin|manager',]], function (){
 
     // Dashboard
@@ -68,14 +76,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 });
 
 // Страницы обьявлений
-Route::group(['prefix' => 'advert', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'advert', 'middleware' => ['auth', 'user-has-time']], function () {
     Route::get('/', 'AdvertController@index')->name('advert-index');
     Route::get('section/{section_id}/type/{type_id}', 'AdvertController@page')->name('advert-page');
     Route::get('section/{section_id}/type/{type_id}/search', 'AdvertController@search')->name('advert-search');
 });
 
 // Страницы газет
-Route::group(['prefix' => 'paper', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'paper', 'middleware' => ['auth', 'user-has-time']], function () {
     Route::get('/', 'PaperController@index')->name('paper-index');
     Route::get('/search', 'PaperController@search')->name('paper-search');
     Route::get('/show/{id}', 'PaperController@show')->name('paper-show');
@@ -90,6 +98,3 @@ Route::group(['prefix' => 'payment'], function () {
     Route::post('/success', 'PaymentController@success')->name('payment-success');
     Route::post('/fail', 'PaymentController@fail')->name('payment-fail');
 });
-
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        @component('components.top_panel')@endcomponent
+        @include('partials.top_panel')
 
         <main class="py-4">
             @yield('content')

@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Carbon;
 
 class User extends Authenticatable
 {
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'time'
     ];
 
     /**
@@ -33,5 +34,10 @@ class User extends Authenticatable
     public function keys()
     {
         return $this->hasMany('App\Models\Key');
+    }
+
+    public function hasTime()
+    {
+        return ($this->time < Carbon::now()) ? false : true;
     }
 }

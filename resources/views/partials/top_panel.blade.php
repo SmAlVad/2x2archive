@@ -32,11 +32,11 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Войти') }}</a>
+                        <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i>&nbsp;{{ __('Войти') }}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Зарегистрироваться') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}"><i class="fas fa-user-edit"></i>&nbsp;{{ __('Регистрация') }}</a>
                         </li>
                     @endif
                 @else
@@ -46,10 +46,14 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            @if(Auth::user()->hasPermissionTo('index'))
+                                <a href="{{ route('admin.index') }}" class="dropdown-item">Админка</a>
+                            @endif
+                            <a href="{{ route('home') }}" class="dropdown-item">Домашняя страница</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                <i class="fas fa-sign-out-alt"></i>&nbsp;{{ __('Выйти') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
