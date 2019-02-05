@@ -2,16 +2,7 @@
 
 @section('content')
 
-    @if($message = Session::get('success'))
-
-        <div class="alert alert-success">
-            <span>{{ $message }}</span>
-            <button type="button" class="close" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-
-    @endif
+    @include('admin.partials.success')
 
     @can('key-create')
     <a href="{{ route('admin.key.create') }}" class="btn btn-primary float-right">

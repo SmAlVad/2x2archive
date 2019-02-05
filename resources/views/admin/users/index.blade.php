@@ -7,11 +7,7 @@
                 <h2>Пользователи</h2>
             </div>
             <div class="col-12">
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success">
-                        <p>{{ $message }}</p>
-                    </div>
-                @endif
+                @include('admin.partials.success')
             </div>
         </div>
         @can('role-list')

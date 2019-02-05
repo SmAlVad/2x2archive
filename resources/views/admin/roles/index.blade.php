@@ -2,11 +2,7 @@
 
 @section('content')
 
-    @if($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+    @include('admin.partials.success')
 
     <a href="{{route('admin.roles.create')}}" class="btn btn-primary float-right">
         <i class="fas fa-plus"></i>

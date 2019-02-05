@@ -4,7 +4,7 @@
         <p>Произошли проблемы при сохранении</p>
         <ul>
             @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
+                <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>

@@ -12,6 +12,7 @@
 /public/origin_pdf
 
 #Files
+tags
 Homestead.json
 Homestead.yaml
 npm-debug.log

@@ -22,12 +22,12 @@
 </head>
 <body>
 <div id="app">
-    @component('admin.components.top_panel')@endcomponent
+    @include('admin.partials.top_panel')
 
     <div class="container-fluid">
         <div class="row">
             <div class="col-2 border-right">
-                @component('admin.components.right_navbar')@endcomponent
+                @include('admin.partials.left_navbar')
             </div>
             <div class="col-10">
                 @yield('content')

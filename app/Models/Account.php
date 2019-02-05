@@ -80,7 +80,7 @@ class Account extends Model
                                      string $payment_alias) : array
     {
         $login = env('ROBOKASSA_LOGIN', 'gazeta.2x2.su');
-        $pass1 = env('ROBOKASSA_PASS1', 'qvC4VMA6MFlD72t2dTJS');
+        $pass1 = env('ROBOKASSA_PASS1');
 
         $receipt = [
             'sno'   => env('SNO', 'osn'),

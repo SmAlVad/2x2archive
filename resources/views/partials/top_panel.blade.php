@@ -46,7 +46,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            @if(Auth::user()->hasPermissionTo('index'))
+                            @if(Auth::user()->hasRole('admin'))
                                 <a href="{{ route('admin.index') }}" class="dropdown-item">Админка</a>
                             @endif
                             <a href="{{ route('home') }}" class="dropdown-item">Домашняя страница</a>
