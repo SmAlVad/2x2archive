@@ -28,8 +28,8 @@ class CsfdController extends Controller
     {
         $counter    = 0;
         $filePath   = $request->file('json')->getRealPath();
-        $json       = file_get_contents($filePath);
-        $data       = json_decode($json);
+        $data       = file_get_contents($filePath);
+        $data       = unserialize($data);
 
         foreach ($data as $item) {
 
