@@ -42,8 +42,8 @@ class Csfd extends Model
     {
        $result = '';
        foreach ($params as $param) {
-           if ($param->title !== '' && $param->value !== '' && $param->value != 0)
-            $result .= "{$param->title}:{$param->value}|";
+           if ($param['title'] !== '' && $param['value'] !== '' && $param['value'] != 0)
+            $result .= "{$param['title']}:{$param['value']}|";
        }
 
        return substr($result,0,-1);

@@ -10,6 +10,7 @@
 /.vagrant
 /public/image
 /public/origin_pdf
+/public/csfd
 
 #Files
 tags
