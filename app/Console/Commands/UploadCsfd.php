@@ -46,25 +46,29 @@ class UploadCsfd extends Command
 
             $csfd = new Csfd();
 
-            $csfd->csfd_id = $item['csfd_id'];
-            $csfd->region = $item['region'];
-            $csfd->city = $item['city'];
-            $csfd->cat1 = $item['cat1'];
-            $csfd->cat2 = $item['cat2'];
-            $csfd->cat3 = $item['cat3'];
-            $csfd->title = $item['title'];
-            $csfd->body = $item['body'];
-            $csfd->tags = $item['tags'];
-            $csfd->price = $item['price'];
-            $csfd->tel = $item['tel'];
-            $csfd->email = $item['email'];
-            $csfd->name = $item['name'];
-            $csfd->date_start = $item['date_start'];
-            $csfd->date_end = $item['date_end'];
-            $csfd->image = $item['image'];
-            $csfd->params = ($item['params']) ? $csfd->makeStrParams($item['params']) : '';
+            $csfd->csfd_id      = $item['csfd_id'];
+            $csfd->region       = $item['region'];
+            $csfd->city         = $item['city'];
+            $csfd->cat1         = $item['cat1'];
+            $csfd->cat2         = $item['cat2'];
+            $csfd->cat3         = $item['cat3'];
+            $csfd->title        = $item['title'];
+            $csfd->body         = $item['body'];
+            $csfd->tags         = $item['tags'];
+            $csfd->price        = $item['price'];
+            $csfd->tel          = $item['tel'];
+            $csfd->email        = $item['email'];
+            $csfd->name         = $item['name'];
+            $csfd->date_start   = $item['date_start'];
+            $csfd->date_end     = $item['date_end'];
+            $csfd->image        = $item['image'];
+            $csfd->params       = ($item['params']) ? $csfd->makeStrParams($item['params']) : '';
 
-            $csfd->save();
+            try {
+                $csfd->save();
+            } catch(\Illuminate\Database\QueryException $ex){
+                echo "{$ex->getMessage()}\n\r";
+            }
         }
     }
 }
