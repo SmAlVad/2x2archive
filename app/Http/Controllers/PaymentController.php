@@ -9,6 +9,7 @@ use App\Models\Account;
 use App\Models\Requisite;
 use App\Models\Order;
 use App\Models\Key;
+use App\Http\Requests\PaymentBillRequest;
 
 class PaymentController extends Controller
 {
@@ -64,7 +65,7 @@ class PaymentController extends Controller
     public function result(Request $request)
     {
         // регистрационная информация (пароль #2)
-        $mrh_pass2  = env('ROBOKASSA_PASS2', 'jLkGrR47s2IyWn3JVc0V');
+        $mrh_pass2  = env('ROBOKASSA_PASS2');
 
         // чтение параметров
         $out_summ   = $request->get('OutSum');          // сумма заказа
@@ -111,7 +112,7 @@ class PaymentController extends Controller
     public function success(Request $request)
     {
         // регистрационная информация (пароль #1)
-        $mrh_pass1  = env('ROBOKASSA_PASS1', 'qvC4VMA6MFlD72t2dTJS');
+        $mrh_pass1  = env('ROBOKASSA_PASS1');
 
         // чтение параметров
         $out_summ   = $request->get('OutSum');
@@ -160,19 +161,8 @@ class PaymentController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function bill(Request $request)
+    public function bill(PaymentBillRequest $request)
     {
-        $this->validate($request, [
-            'recipient' => 'required',
-            'inn'       => 'required|digits:10',
-            'kpp'       => 'digits:9',
-            'bank'      => 'required',
-            'account'   => 'required|digits:20',
-            'bik'       => 'required|digits:9',
-            'ks'        => 'required|digits:20',
-            'address'   => 'required',
-            'phone'     => 'required|max:19',
-        ]);
 
         $requisite = new Requisite();
         $requisite->user_id      = $request->user()->id;

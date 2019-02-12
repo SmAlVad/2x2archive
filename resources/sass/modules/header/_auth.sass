@@ -1,0 +1,41 @@
+/*----------------------------------------------------------------------------------------------------------------------
+ *  Авторизация\регистрация
+ *--------------------------------------------------------------------------------------------------------------------*/
+.auth-menu
+  display: flex
+  align-items: center
+  list-style-type: none
+  height: 60px
+  margin: 0
+  padding: 0
+  &:hover
+    .auth-dropdown
+      display: block
+
+  .auth-item
+    position: relative
+    padding: 3px 10px
+
+    .auth-btn
+      color: $white
+      &:hover
+        text-decoration: none
+
+.auth-dropdown
+  display: none
+  min-width: 200px
+  position: absolute
+  top: 45px
+  background-color: $appLightBlue
+  z-index: 1
+
+  .auth-dropdown-item
+    transition: background-color linear .1s
+    display: block
+    padding: 4px 10px
+    color: $appDarkBlue
+    text-decoration: none
+
+    &:hover
+      background-color: $appDarkBlue
+      color: $appLight

@@ -1,0 +1,45 @@
+.advert-category
+  position: relative
+  background-color: $appLightBlue
+  border-radius: 5px
+  margin-bottom: 1%
+  display: flex
+  &:hover
+    cursor: pointer
+
+  .advert-category-item
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: $appDarkBlue
+    color: $appLight
+    padding: 0 10px
+    font-size: 1.2rem
+    min-width: 60px
+
+  .advert-category-title
+    color: $appDarkBlue
+    padding: 5px 10px
+    display: flex
+    align-items: center
+
+.advert-category-list-items
+  display: none
+
+  ul
+    background-color: $appLightBlue
+    list-style-type: none
+    padding: 2% 12%
+
+    li
+      a
+        text-transform: uppercase
+        color: $appDarkBlue
+
+.advert-add
+  display: block
+  &:hover
+    text-decoration: none
+
+  .advert-category-item
+    background-color: $appBlue

@@ -51,7 +51,7 @@ Route::group(['prefix' => 'paper', 'middleware' => ['auth', 'user-has-time']], f
 // Страницы покупки ключа
 Route::group(['prefix' => 'payment'], function () {
     Route::get('/', 'PaymentController@index')->name('payment-index');
-    Route::get('/confirm', 'PaymentController@confirm')->name('payment-confirm');
+    Route::get('/confirm', 'PaymentController@confirm')->name('payment-confirm')->middleware('auth');;
     Route::post('/bill', 'PaymentController@bill')->name('payment-bill');
     Route::post('/result', 'PaymentController@result')->name('payment-result');
     Route::post('/success', 'PaymentController@success')->name('payment-success');

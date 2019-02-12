@@ -1,0 +1,83 @@
+.search-paper-year
+  margin-bottom: 1%
+
+  .paper-year-title
+    text-transform: uppercase
+
+  .paper-year-radio
+    display: flex
+    label
+      background-color: $appLightBlue
+      padding: 5px 10px
+      &:hover
+        background-color: $appBlue
+        color: $appLight
+        cursor: pointer
+    input
+      display: none
+    input:checked+label
+      background-color: $appBlue
+      color: $appLight
+
+.search-paper-month
+  @extend .search-paper-year
+
+  .paper-month-title
+    @extend .paper-year-title
+
+  .paper-month-radio
+    display: flex
+    label
+      background-color: $appLightBlue
+      padding: 5px 10px
+      &:hover
+        background-color: $appBlue
+        color: $appLight
+        cursor: pointer
+    input
+      display: none
+    input:checked+label
+      background-color: $appBlue
+      color: $appLight
+
+.search-paper-name
+  @extend .search-paper-year
+
+  .paper-name-title
+    @extend .paper-year-title
+
+  .paper-name-radio
+    display: flex
+    label
+      background-color: $appLightBlue
+      padding: 5px 10px
+      &:hover
+        background-color: $appBlue
+        color: $appLight
+        cursor: pointer
+    input
+      display: none
+    input:checked+label
+      background-color: $appBlue
+      color: $appLight
+
+.search-paper-btn
+  width: 30%
+  background-color: $appDarkBlue
+  text-transform: uppercase
+  padding: 10px
+  border: 0
+  color: $appLight
+  border-radius: 5px
+  &:hover
+    background: $appBlue
+    cursor: pointer
+
+.search-paper-result
+  ul
+    list-style-type: none
+    li
+      a
+        color: $appDarkBlue
+        &:hover
+          color: $appBlue

@@ -1,0 +1,86 @@
+%label
+  width: 100%
+  text-align: center
+  padding: 15% 0
+  background-color: $appLightBlue
+  border-radius: 5px
+  //border: 1px solid $appDarkBlue
+  margin: 0
+  transition: all linear .1s
+  &:hover
+    cursor: pointer
+    background-color: $appBlue
+    color: $appLight
+
+.payment-description
+  @extend .select-rate
+
+  .select-rate-title
+    @extend .select-rate-title
+
+  .payment-description-content
+    flex-basis: 75%
+    text-transform: none
+
+.select-rate
+  display: flex
+  color: $appDarkBlue
+  text-transform: uppercase
+
+  .select-rate-title
+    flex-basis: 25%
+
+  .select-rate-radio-container
+    flex-basis: 25%
+    margin: 2px
+
+    .radio-btn
+      label
+        @extend %label
+
+      input
+        display: none
+
+      input:checked+label
+        background-color: $appBlue
+        color: $appLight
+
+.payment-method
+  @extend .select-rate
+
+  .payment-method-title
+    @extend .select-rate-title
+
+  .payment-method-container
+    flex-basis: (75% / 8)
+    margin: 2px
+
+    .radio-btn
+      height: 100%
+
+      label
+        height: 100%
+        @extend %label
+
+      input
+        display: none
+
+      input:checked+label
+        background-color: $appBlue
+        color: $appLight
+
+.payment-method-next
+  display: flex
+  justify-content: flex-end
+
+  button
+    flex-basis: 75%
+    background-color: $appDarkBlue
+    border: 0
+    color: $appLight
+    padding: 1% 0
+    border-radius: 5px
+    transition: background-color linear .1s
+    &:hover
+      cursor: pointer
+      background-color: $appBlue

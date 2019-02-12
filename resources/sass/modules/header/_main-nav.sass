@@ -1,0 +1,35 @@
+/*----------------------------------------------------------------------------------------------------------------------
+ *  Главная навигация
+ *--------------------------------------------------------------------------------------------------------------------*/
+.main-nav
+  height: 100%
+
+.menu
+  display: flex
+  justify-content: flex-end
+  padding: 0
+  margin: 0
+  height: 100%
+
+  .menu-item
+    margin-right: 10px
+    list-style-type: none
+    display: flex
+    align-items: center
+    transition: all linear .1s
+    &:hover
+      border-bottom: 3px solid $appLight
+      border-top: 3px solid $appLight
+
+    .menu-btn
+      text-align: center
+      display: block
+      padding: 2px 5px
+      color: $appLight
+      text-transform: uppercase
+      &:hover
+        text-decoration: none
+
+  .menu-item-active
+    background: $appDarkBlue
+    padding: 0 3px
