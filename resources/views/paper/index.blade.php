@@ -10,7 +10,7 @@
                         <ul>
                             @forelse($pdfs as $pdf)
                                 <li><i class="fas fa-file"></i>&nbsp;
-                                    <a href="{{ route('paper-show', $pdf->id) }}">
+                                    <a href="{{ route('paper-show', $pdf->id) }}" target="_blank">
                                         Издание {{ $pdf->project->name }} |
                                         год {{ $pdf->year }} |
                                         месяц {{ $pdf->month }} |

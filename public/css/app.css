@@ -16303,7 +16303,14 @@ readers do not read off random characters that represent icons */
 
 .menu .menu-item-active {
   background: #112d4e;
-  padding: 0 3px;
+}
+
+.menu .menu-item-active:hover {
+  border: 0;
+}
+
+.menu .menu-item-active:hover .menu-btn:hover {
+  cursor: default;
 }
 
 /*------------------------------------------------------
@@ -16420,7 +16427,7 @@ readers do not read off random characters that represent icons */
   background-color: #112d4e;
   border: 0;
   color: #f9f7f7;
-  padding: 1% 0;
+  padding: 10px 0;
   border-radius: 5px;
   -webkit-transition: background-color linear .1s;
   transition: background-color linear .1s;
@@ -16462,7 +16469,7 @@ readers do not read off random characters that represent icons */
   background-color: #112d4e;
   color: #f9f7f7;
   padding: 0 10px;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   min-width: 60px;
 }
 
