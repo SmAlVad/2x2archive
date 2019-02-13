@@ -1,0 +1,58 @@
+.adv-search-panel
+  display: flex
+  justify-content: space-between
+  background-color: $appLightBlue
+  padding: 10px 0
+
+#right-slide-menu-btn
+  flex-basis: 10%
+  display: flex
+  justify-content: center
+  align-items: center
+  font-size: 1.5rem
+
+.adv-search-form
+  flex-basis: 90%
+  display: flex
+  justify-content: space-around
+
+  .adv-search-form-input
+    flex-basis: (100% / 8)
+    color: $appDarkBlue
+
+    #input-subsection
+      width: 100%
+      height: 33px
+      padding-left: 10px
+      background-color: $appLight
+      border:
+        top: 1px solid $appDarkBlue
+        left: 0
+        right: 0
+        bottom: 1px solid $appDarkBlue
+      &:focus
+        background-color: $appBlue
+        color: $appLight
+
+    input
+      @extend #input-subsection
+
+  .btn-search
+    background-color: $appDarkBlue
+    text-align: center
+    color: $appLight
+    padding: 5px 10px
+    border: 0
+    text-transform: uppercase
+    border-radius: 3px
+
+    &:hover
+      cursor: pointer
+      background-color: $appBlue
+
+//.adv-search-result
+
+
+.adv-search-explain
+  margin-top: 100px
+  text-align: center

@@ -1,6 +1,5 @@
 <div id="right-slide-nav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
+    <div id="closebtn">&times;</div>
 
     <div class="accordion" id="accordion">
         {{-- Недвижемость --}}

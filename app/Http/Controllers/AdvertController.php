@@ -32,14 +32,12 @@ class AdvertController extends Controller
         $type           = Category::where('id', $request->type_id)->first();
         $subsections    = Category::where('parent_id', $request->type_id)->get();
 
-        $adverts        = Csfd::where('cat1', $request->section_id)->where('cat2', $request->type_id)->paginate(15);
 
         return view('advert.page', [
             'section'               => $section,
             'type'                  => $type,
             'subsections'           => $subsections,
             'selected_subsection'   => 0,
-            'adverts'               => $adverts
         ]);
     }
 
