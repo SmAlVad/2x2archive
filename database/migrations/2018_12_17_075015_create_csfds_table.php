@@ -28,7 +28,7 @@ class CreateCsfdsTable extends Migration
             $table->string('title')->comment('Заголовок');
             $table->text('body')->comment('Тело обьявления');
             $table->string('tags')->comment('Тэги');
-            $table->string('price')->comment('Цена');
+            $table->integer('price')->comment('Цена');
             $table->string('tel')->comment('Телефон');
             $table->string('email')->comment('Электронная почта');
             $table->string('name')->comment('Имя подвшего');

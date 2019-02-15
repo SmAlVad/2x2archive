@@ -16162,6 +16162,7 @@ readers do not read off random characters that represent icons */
 
 #body {
   background-color: #f9f7f7;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 /*----------------------------------------------------------------------------------------------------------------------
@@ -16234,12 +16235,12 @@ readers do not read off random characters that represent icons */
   position: absolute;
   top: 45px;
   background-color: #dbe2ef;
+  border: 1px solid #3f72af;
+  border-top: 0;
   z-index: 1;
 }
 
 .auth-dropdown .auth-dropdown-item {
-  -webkit-transition: background-color linear .1s;
-  transition: background-color linear .1s;
   display: block;
   padding: 4px 10px;
   color: #112d4e;
@@ -16336,7 +16337,7 @@ readers do not read off random characters that represent icons */
 .payment-method .select-rate-radio-container .radio-btn label:hover,
 .payment-method .payment-method-container .radio-btn label:hover {
   cursor: pointer;
-  background-color: #3f72af;
+  background-color: #5d90cd;
   color: #f9f7f7;
 }
 
@@ -16368,6 +16369,17 @@ readers do not read off random characters that represent icons */
       flex-basis: 25%;
 }
 
+.select-rate .select-rate-title p,
+.payment-description .select-rate-title p,
+.payment-method .select-rate-title p,
+.payment-method .payment-description .select-rate-title p,
+.payment-description .payment-method .select-rate-title p,
+.payment-description .payment-method .payment-method-title p,
+.payment-method .payment-description .payment-method-title p,
+.payment-method .payment-method-title p {
+  text-transform: none;
+}
+
 .select-rate .select-rate-radio-container,
 .payment-description .select-rate-radio-container,
 .payment-method .select-rate-radio-container {
@@ -16385,8 +16397,11 @@ readers do not read off random characters that represent icons */
 .select-rate .select-rate-radio-container .radio-btn input:checked + label,
 .payment-description .select-rate-radio-container .radio-btn input:checked + label,
 .payment-method .select-rate-radio-container .radio-btn input:checked + label {
+  position: relative;
   background-color: #3f72af;
   color: #f9f7f7;
+  -webkit-box-shadow: 0 5px 7px 0 rgba(50, 50, 50, 0.75);
+          box-shadow: 0 5px 7px 0 rgba(50, 50, 50, 0.75);
 }
 
 .payment-method .payment-method-container {
@@ -16408,22 +16423,34 @@ readers do not read off random characters that represent icons */
 }
 
 .payment-method .payment-method-container .radio-btn input:checked + label {
+  position: relative;
   background-color: #3f72af;
   color: #f9f7f7;
+  -webkit-box-shadow: 0 5px 7px 0 rgba(50, 50, 50, 0.75);
+          box-shadow: 0 5px 7px 0 rgba(50, 50, 50, 0.75);
 }
 
 .payment-method-next {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
 }
 
-.payment-method-next button {
+.payment-method-next .payment-method-next-fluid {
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
+  width: 100%;
+}
+
+.payment-method-next .payment-method-next-btn {
   -ms-flex-preferred-size: 75%;
       flex-basis: 75%;
+  width: 100%;
+  text-align: center;
+}
+
+.payment-method-next .payment-method-next-btn button {
+  width: 50%;
   background-color: #112d4e;
   border: 0;
   color: #f9f7f7;
@@ -16433,7 +16460,7 @@ readers do not read off random characters that represent icons */
   transition: background-color linear .1s;
 }
 
-.payment-method-next button:hover {
+.payment-method-next .payment-method-next-btn button:hover {
   cursor: pointer;
   background-color: #3f72af;
 }
@@ -16518,11 +16545,12 @@ readers do not read off random characters that represent icons */
 #right-slide-nav {
   background-color: #dbe2ef;
   min-width: 310px;
-  border-left: 1px solid #112d4e;
+  border-right: 1px solid #112d4e;
   display: none;
   position: absolute;
   top: 60px;
   left: 0;
+  z-index: 2;
 }
 
 #closebtn {
@@ -16609,6 +16637,10 @@ readers do not read off random characters that represent icons */
 .adv-search-form .btn-search:hover {
   cursor: pointer;
   background-color: #3f72af;
+}
+
+.empty-result {
+  text-align: center;
 }
 
 .adv-search-explain {
@@ -16803,17 +16835,5 @@ readers do not read off random characters that represent icons */
  *
  * Содержит стили, специфичные для отдельных страниц, если это необходимо.
  *
- *--------------------------------------------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------------------------------------------
- * Страница покупки ключа
- *--------------------------------------------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------------------------------------------
- * Страница просмотра обьявлений
- *--------------------------------------------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------------------------------------------
- * Страница просмора газет
  *--------------------------------------------------------------------------------------------------------------------*/
 

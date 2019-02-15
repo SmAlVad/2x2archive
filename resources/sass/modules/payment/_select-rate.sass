@@ -4,12 +4,11 @@
   padding: 15% 0
   background-color: $appLightBlue
   border-radius: 5px
-  //border: 1px solid $appDarkBlue
   margin: 0
   transition: all linear .1s
   &:hover
     cursor: pointer
-    background-color: $appBlue
+    background-color: $appBlue + 30%
     color: $appLight
 
 .payment-description
@@ -29,6 +28,8 @@
 
   .select-rate-title
     flex-basis: 25%
+    p
+      text-transform: none
 
   .select-rate-radio-container
     flex-basis: 25%
@@ -42,8 +43,10 @@
         display: none
 
       input:checked+label
+        position: relative
         background-color: $appBlue
         color: $appLight
+        box-shadow: 0 5px 7px 0 rgba(50, 50, 50, 0.75)
 
 .payment-method
   @extend .select-rate
@@ -66,21 +69,29 @@
         display: none
 
       input:checked+label
+        position: relative
         background-color: $appBlue
         color: $appLight
+        box-shadow: 0 5px 7px 0 rgba(50, 50, 50, 0.75)
 
 .payment-method-next
   display: flex
-  justify-content: flex-end
+  .payment-method-next-fluid
+    flex-basis: 25%
+    width: 100%
 
-  button
+  .payment-method-next-btn
     flex-basis: 75%
-    background-color: $appDarkBlue
-    border: 0
-    color: $appLight
-    padding: 10px 0
-    border-radius: 5px
-    transition: background-color linear .1s
-    &:hover
-      cursor: pointer
-      background-color: $appBlue
+    width: 100%
+    text-align: center
+    button
+      width: 50%
+      background-color: $appDarkBlue
+      border: 0
+      color: $appLight
+      padding: 10px 0
+      border-radius: 5px
+      transition: background-color linear .1s
+      &:hover
+        cursor: pointer
+        background-color: $appBlue

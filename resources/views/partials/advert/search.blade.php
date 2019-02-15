@@ -1,13 +1,7 @@
-
-
 <form action="{{ route('advert-search', ['section_id' => $section->id, 'type_id' => $type->id]) }}"
       method="GET"
       class="adv-search-form">
     @csrf
-
-    {{--<input type="hidden" value="{{ $section_id }}" name="section">--}}
-    {{--<input type="hidden" value="{{ $type_id }}" name="type">--}}
-
 
     {{--Выбор категории 3-го уровня--}}
     <div class="adv-search-form-input">
@@ -46,12 +40,12 @@
     </div>
 
     {{-- Vue component Тэги --}}
-    {{--<div class="adv-search-form-input">--}}
-        {{--<div class="">--}}
-            {{--<label for="tags">Тэги</label>--}}
-        {{--</div>--}}
-        {{--<input type="text" id="tags" name="tags" placeholder="2-комн, собственник">--}}
-    {{--</div>--}}
+    <div class="adv-search-form-input">
+        <div class="">
+            <label for="tags">Тэги</label>
+        </div>
+        <input type="text" id="tags" name="tags" placeholder="2-комн, собственник">
+    </div>
 
     {{--Цена от--}}
     <div class="adv-search-form-input">

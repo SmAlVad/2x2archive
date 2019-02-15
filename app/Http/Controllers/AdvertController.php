@@ -38,6 +38,7 @@ class AdvertController extends Controller
             'type'                  => $type,
             'subtypes'              => $subtypes,
             'selected_subtype'      => 0,
+            'show_explain'          => true,
         ]);
     }
 
@@ -50,7 +51,7 @@ class AdvertController extends Controller
     public function search(Request $request, $section_id, $type_id)
     {
         // Подтип
-        $subtype    = $request->input('subtype') ?? 0;
+        $subtype    = $request->input('subtype');
 
         $date_start    = $request->input('date-start');
         $date_end    = $request->input('date-end');

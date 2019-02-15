@@ -19,7 +19,7 @@
                 @if(Auth::user()->hasRole('admin'))
                     <a href="{{ route('admin.index') }}" class="auth-dropdown-item">Админка</a>
                 @endif
-                <a href="{{ route('home') }}" class="auth-dropdown-item">Домашняя страница</a>
+                <a href="{{ route('home') }}" class="auth-dropdown-item">Личный кабинет</a>
                 <a class="auth-dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

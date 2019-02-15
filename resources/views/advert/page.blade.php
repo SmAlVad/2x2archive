@@ -14,21 +14,26 @@
     <div class="adv-search-result">
 
         @isset($adverts)
-            <div class="adv-pagination-top">
-                {{$adverts->links()}}
-                <h5>Найдено:&nbsp;<span class="badge badge-success">{{ $adverts->total() }}</span>&nbsp;обьявлений</h5>
-            </div>
-            <table class="table table-striped">
+
+            @if($adverts->total())
+                <div class="adv-pagination-top">
+                    {{$adverts->links()}}
+                    <div class="">Формат даты: гггг-мм-дд</div>
+                    <h5>Найдено:&nbsp;<span class="badge badge-success">{{ $adverts->total() }}</span>&nbsp;обьявлений</h5>
+                </div>
+            @endif
+
+                <table class="table table-striped">
                 <thead>
                     <tr>
                         <th width="10%">Фото</th>
                         <th>Заголовок</th>
                         <th>Текст</th>
-                        <th>Цена</th>
+                        <th width="5%">Цена, ₽</th>
                         <th>Имя</th>
                         <th>Телефон</th>
                         <th>E-mail</th>
-                        <th>Подачи</th>
+                        <th>Подача</th>
                         <th>Окончание</th>
                     </tr>
                 </thead>
@@ -47,8 +52,10 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="8">
-                            <i class="far fa-frown"></i>&nbsp;Нет обьявлений
+                        <td colspan="9">
+                            <div class="empty-result">
+                                <i class="far fa-frown"></i>&nbsp;Ничего не найдено
+                            </div>
                         </td>
                     </tr>
                 @endforelse
@@ -60,14 +67,16 @@
         @endisset
     </div>
 
-    {{--<div class="adv-search-explain">--}}
-    {{--<h3>--}}
-    {{--Заполните необходимые поля и нажмите кнопку "ИСКАТЬ"--}}
-    {{--</h3>--}}
-    {{--<h3>--}}
-    {{--Нажмите на <i class="fas fa-bars"></i> для отображения списка категорий--}}
-    {{--</h3>--}}
-    {{--</div>--}}
+    @isset($show_explain)
+        <div class="adv-search-explain">
+            <h3>
+                Тут надо обьяснить простыми словами как пользоваться поиском
+            </h3>
+            <h3>
+                Нажмите на <i class="fas fa-bars"></i> для отображения списка категорий
+            </h3>
+        </div>
+    @endisset
 
     @include('partials.advert.right_slide_menu')
 
