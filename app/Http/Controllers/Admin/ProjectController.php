@@ -45,6 +45,7 @@ class ProjectController extends Controller
         $project = Project::find($id);
 
         $project->name = $request->get('name');
+        $project->slug = $request->get('slug');
         $project->sort = $request->get('sort');
         $project->save();
 

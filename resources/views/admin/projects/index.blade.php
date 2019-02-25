@@ -15,6 +15,7 @@
         <tr>
             <th>ID</th>
             <th>Название</th>
+            <th>Слаг</th>
             <th>Сортировка</th>
             <th>Действия</th>
         </tr>
@@ -24,6 +25,7 @@
             <tr>
                 <td>{{$project->id}}</td>
                 <td>{{$project->name}}</td>
+                <td>{{$project->slug}}</td>
                 <td>{{$project->sort}}</td>
                 <td>
                     <form action="{{route('admin.project.destroy', $project->id)}}" method="post">
@@ -38,7 +40,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="4" class="text-center">
+                <td colspan="5" class="text-center">
                     <h4>Данные отсутствуют</h4>
                 </td>
             </tr>

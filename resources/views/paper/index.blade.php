@@ -32,10 +32,10 @@
                             <h4>Год</h4>
                         </div>
                         <div class="paper-year-radio">
-                            @foreach(\App\Models\Pdf::getReleaseYear() as $k => $v)
-                                <input type="radio" name="year" id="year-radio-{{$k}}"
-                                       value="{{ $v }}" {{ ($k == $year) ? 'checked' : '' }}>
-                                <label for="year-radio-{{ $k }}">{{ $v }}</label>
+                            @foreach(\App\Models\Pdf::getReleaseYear() as $release_year)
+                                <input type="radio" name="year" id="year-radio-{{$release_year}}"
+                                       value="{{ $release_year }}" {{ ($release_year == $year) ? 'checked' : '' }}>
+                                <label for="year-radio-{{ $release_year }}">{{ $release_year }}</label>
                             @endforeach
                         </div>
                     </div>

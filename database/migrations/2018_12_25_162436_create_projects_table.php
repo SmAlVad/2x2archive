@@ -16,6 +16,7 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->comment('Название проекта(газеты)');
+            $table->string('slug')->comment('Уникальное название на латинице');
             $table->integer('sort')->default(0)->comment('Сортировка');
             $table->timestamps();
         });

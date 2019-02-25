@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Project extends Model
 {
-    protected $fillable = ['name', 'sort'];
+    protected $fillable = ['name', 'slug', 'sort'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

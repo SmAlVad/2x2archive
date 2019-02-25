@@ -14,6 +14,11 @@
         </div>
 
         <div class="form-group">
+            <label for="input-slug">Слаг, уникальное название на латинице</label>
+            <input type="text" class="form-control" id="input-slug" name="slug" required>
+        </div>
+
+        <div class="form-group">
             <label for="input-time">Сортировка</label>
             <input type="text" class="form-control" id="input-time" name="sort" value="0">
         </div>
