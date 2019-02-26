@@ -10,6 +10,7 @@ use App\Models\Requisite;
 use App\Models\Order;
 use App\Models\Key;
 use App\Http\Requests\PaymentBillRequest;
+use Illuminate\Support\Carbon;
 
 class PaymentController extends Controller
 {
@@ -71,11 +72,12 @@ class PaymentController extends Controller
         $out_summ   =  $_REQUEST["OutSum"];         // сумма заказа
         $inv_id     =  $_REQUEST["InvId"];          // номер заказа
         $shp_item   =  $_REQUEST["Shp_item"];       // тип товара
+        $user_id    = $_REQUEST['Shp_user'];        // id пользователя
         $crc        =  $_REQUEST["SignatureValue"]; // подпись
 
         $crc = strtoupper($crc);
 
-        $my_crc = strtoupper(md5("$out_summ:$inv_id:$mrh_pass2:Shp_item=$shp_item"));
+        $my_crc = strtoupper(md5("$out_summ:$inv_id:$mrh_pass2:Shp_item=$shp_item:Shp_user=$user_id"));
 
         // проверка корректности подписи
         if ($my_crc !=$crc)
@@ -84,7 +86,41 @@ class PaymentController extends Controller
             exit();
         }
 
-        $order = Order::find($inv_id);
+        return redirect()->route('home');
+    }
+
+    /**
+     * Успешный ответ от РК. Редирект на домашнюю страницу пользователя
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function success(Request $request)
+    {
+        // регистрационная информация (пароль #1),,
+        $mrh_pass1  = env('ROBOKASSA_PASS1');
+
+        // чтение параметров
+        $out_summ   = $_REQUEST["OutSum"];
+        $inv_id     = $_REQUEST["InvId"];
+        $shp_item   = $_REQUEST["Shp_item"];
+        $user_id    = $_REQUEST['Shp_user'];
+        $crc        = $_REQUEST["SignatureValue"];
+
+        $crc        = strtoupper($crc);
+
+        $my_crc     = strtoupper(md5("$out_summ:$inv_id:$mrh_pass1:Shp_item=$shp_item:Shp_user=$user_id"));
+
+        // проверка корректности подписи
+        if ($my_crc != $crc)
+        {
+            echo "Success\nBad sign\n";
+            exit();
+        }
+
+        $order      = Order::find($inv_id);
+
+        $userId     = $order->user->id;
 
         $key = new Key();
         $randomInt = $key->generateKey();
@@ -103,44 +139,13 @@ class PaymentController extends Controller
         $order->is_paid     = 1;
         $order->key_id      = $key->id;
         $order->save();
-    }
 
-    /**
-     * Успешный ответ от РК. Редирект на домашнюю страницу пользователя
-     *
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function success(Request $request)
-    {
-        // регистрационная информация (пароль #1),,
-        $mrh_pass1  = env('ROBOKASSA_PASS1');
-
-        // чтение параметров
-        $out_summ   = $_REQUEST["OutSum"];
-        $inv_id     = $_REQUEST["InvId"];
-        $shp_item   = $_REQUEST["Shp_item"];
-        $crc        = $_REQUEST["SignatureValue"];
-
-        $crc        = strtoupper($crc);
-
-        $my_crc     = strtoupper(md5("$out_summ:$inv_id:$mrh_pass1:Shp_item=$shp_item"));
-
-        // проверка корректности подписи
-        if ($my_crc != $crc)
-        {
-            echo "Success\nBad sign\n";
-            exit();
-        }
-
-        $order      = Order::find($inv_id);
-
-        $userId     = $order->user->id;
+        $timeNow    = Carbon::now();
 
         $accounts   = Account::where('user_id', $userId)->orderBy('id','DESK')->get();
         $keys       = Key::where('user_id', $userId)->where('active', 0)->get();
 
-        return view('home', compact('accounts','keys'));
+        return view('home', compact('accounts','keys', 'timeNow'));
 
     }
 
