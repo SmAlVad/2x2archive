@@ -84,6 +84,8 @@ class PaymentController extends Controller
             exit();
         }
 
+        $order = Order::find($inv_id);
+
         $key = new Key();
         $randomInt = $key->generateKey();
 
@@ -93,12 +95,12 @@ class PaymentController extends Controller
 
         $key->key           = $randomInt;
         $key->rate_id       = $shp_item;
-        $key->user_id       = $request->user()->id;
-        $key->created_by    = $request->user()->name;
+        $key->user_id       = $order->user->id;
+        $key->active        = 0;
+        $key->created_by    = $order->user->name;
         $key->save();
 
-        $order              = Order::find($inv_id);
-        $order->id_paid     = 1;
+        $order->is_paid     = 1;
         $order->key_id      = $key->id;
         $order->save();
     }
@@ -131,7 +133,9 @@ class PaymentController extends Controller
             exit();
         }
 
-        $userId     = $request->user()->id;
+        $order      = Order::find($inv_id);
+
+        $userId     = $order->user->id;
 
         $accounts   = Account::where('user_id', $userId)->orderBy('id','DESK')->get();
         $keys       = Key::where('user_id', $userId)->where('active', 0)->get();
