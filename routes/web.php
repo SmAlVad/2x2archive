@@ -51,13 +51,12 @@ Route::group(['prefix' => 'paper', 'middleware' => ['auth', 'user-has-time']], f
 // Страницы покупки ключа
 Route::group(['prefix' => 'payment'], function () {
     Route::get('/', 'PaymentController@index')->name('payment-index');
-    Route::get('/confirm', 'PaymentController@confirm')->name('payment-confirm')->middleware('auth');;
+    Route::get('/confirm', 'PaymentController@confirm')->name('payment-confirm')->middleware('auth');
     Route::post('/bill', 'PaymentController@bill')->name('payment-bill');
     Route::post('/result', 'PaymentController@result')->name('payment-result');
     Route::post('/success', 'PaymentController@success')->name('payment-success');
     Route::post('/fail', 'PaymentController@fail')->name('payment-fail');
 });
-//>>>
 
 
 /*
@@ -110,4 +109,3 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     // Роли - Roles
     Route::resource('/roles','RoleController', ['as' => 'admin']);
 });
-//>>>

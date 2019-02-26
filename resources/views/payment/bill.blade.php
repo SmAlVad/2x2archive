@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid" id="billForm">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center py-4">
             <div class="col-xl-6">
                 <h3>Внесите данные вашей организации для выставления счета</h3>
 
@@ -57,7 +57,7 @@
                     {!! Form::text('phone', old('phone'), ['id' => 'bill-phone', 'class' => 'form-control', 'required' => 'required', 'data-mask' => '+ 0 (000) 000-00-00']); !!}
                 </div>
 
-                {!! Form::submit('Оплатить', ['class' => 'btn btn-primary']); !!}
+                {!! Form::submit('Оплатить', ['class' => 'app-btn']); !!}
                 {!! Form::close() !!}
             </div>
         </div>

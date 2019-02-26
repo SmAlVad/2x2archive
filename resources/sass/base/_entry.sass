@@ -7,15 +7,18 @@
 // Шрифты
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro')
 
-// Body
-$body-bg: #f8fafc
-
-// Typography
+// Типография
 $font-family-sans-serif: "Source Sans Pro", sans-serif
 $font-size-base: 0.9rem
 $line-height-base: 1.6
 
-// Colors
+// Основные цвета
+$appLight: #f9f7f7
+$appLightBlue: #dbe2ef
+$appBlue: #3f72af
+$appDarkBlue: #112d4e
+
+// Вспомогательные цвета
 $blue: #3490dc
 $indigo: #6574cd
 $purple: #9561e2
@@ -29,12 +32,20 @@ $cyan: #6cb2eb
 $dark: #2f323a
 $black: #22242a
 
-// Custom colors
-$siteStartGreen: #386607
-$siteEndGreen: #d6ed79
-$siteBlue: #2a4b99
+// Кнопки
+.app-btn
+  background-color: $appDarkBlue
+  text-align: center
+  color: $appLight
+  padding: 5px 10px
+  border: 0
+  text-transform: uppercase
+  border-radius: 3px
 
-$appLight: #f9f7f7
-$appLightBlue: #dbe2ef
-$appBlue: #3f72af
-$appDarkBlue: #112d4e
+  &:hover
+    cursor: pointer
+    background-color: $appBlue
+
+// Ширина 50%
+.w-50
+  width: 50%
