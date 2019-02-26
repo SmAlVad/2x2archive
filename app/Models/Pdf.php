@@ -18,20 +18,20 @@ class Pdf extends Model
     }
 
     /**
-     * Год выхода газет, в 2020 не забудь добавить 2020 год!
+     * Возвращает год выхода
      *
      * @return array
      */
     public static function getReleaseYear()
     {
-        return [
-            '2014',
-            '2015',
-            '2016',
-            '2017',
-            '2018',
-            '2019',
-        ];
+
+        $result = [];
+
+        for($i = 2014; $i <= date('Y'); $i++) {
+            $result[] = $i;
+        }
+
+        return $result;
     }
 
     /**

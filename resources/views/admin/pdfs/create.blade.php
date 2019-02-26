@@ -19,7 +19,7 @@
 
     <div class="form-group">
         <label for="start-date">Дата:</label>
-        <input type="date" id="start-date" name="date" min="2014-01-01" max="2020-12-31" required>
+        <input type="date" id="start-date" name="date" min="2014-01-01" max="{{ date('Y-m-d') }}" required>
     </div>
 
 

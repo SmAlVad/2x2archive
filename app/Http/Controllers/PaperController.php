@@ -38,6 +38,7 @@ class PaperController extends Controller
         $pdfs = Pdf::where('project_id', $project_id)
             ->where('year', $year)
             ->where('month', $month)
+            ->orderBy('number')
             ->get();
 
         return view('paper.index', compact('pdfs', 'project_id','year','month'));
