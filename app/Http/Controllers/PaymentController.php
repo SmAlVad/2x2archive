@@ -68,10 +68,10 @@ class PaymentController extends Controller
         $mrh_pass2  = env('ROBOKASSA_PASS2');
 
         // чтение параметров
-        $out_summ   = $request->get('OutSum');          // сумма заказа
-        $inv_id     = $request->get('InvId');           // номер заказа
-        $shp_item   = $request->get('Shp_item');        // тип товара
-        $crc        = $request->get('SignatureValue');  // подпись
+        $out_summ   =  $_REQUEST["OutSum"];         // сумма заказа
+        $inv_id     =  $_REQUEST["InvId"];          // номер заказа
+        $shp_item   =  $_REQUEST["Shp_item"];       // тип товара
+        $crc        =  $_REQUEST["SignatureValue"]; // подпись
 
         $crc = strtoupper($crc);
 
@@ -80,7 +80,7 @@ class PaymentController extends Controller
         // проверка корректности подписи
         if ($my_crc !=$crc)
         {
-            echo "Bad sign\n";
+            echo "Result\nBad sign\n";
             exit();
         }
 
@@ -113,14 +113,14 @@ class PaymentController extends Controller
      */
     public function success(Request $request)
     {
-        // регистрационная информация (пароль #1)
+        // регистрационная информация (пароль #1),,
         $mrh_pass1  = env('ROBOKASSA_PASS1');
 
         // чтение параметров
-        $out_summ   = $request->get('OutSum');
-        $inv_id     = $request->get('InvId');
-        $shp_item   = $request->get('Shp_item');
-        $crc        = $request->get('SignatureValue');
+        $out_summ   = $_REQUEST["OutSum"];
+        $inv_id     = $_REQUEST["InvId"];
+        $shp_item   = $_REQUEST["Shp_item"];
+        $crc        = $_REQUEST["SignatureValue"];
 
         $crc        = strtoupper($crc);
 
@@ -129,7 +129,7 @@ class PaymentController extends Controller
         // проверка корректности подписи
         if ($my_crc != $crc)
         {
-            echo "Bad sign\n";
+            echo "Success\nBad sign\n";
             exit();
         }
 
