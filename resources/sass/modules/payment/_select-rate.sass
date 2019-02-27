@@ -32,7 +32,7 @@
       text-transform: none
 
   .select-rate-radio-container
-    flex-basis: 25%
+    flex-basis: 33%
     margin: 2px
 
     .radio-btn
@@ -55,7 +55,7 @@
     @extend .select-rate-title
 
   .payment-method-container
-    flex-basis: (75% / 8)
+    flex-basis: (100% / 8)
     margin: 2px
 
     .radio-btn
@@ -74,24 +74,7 @@
         color: $appLight
         box-shadow: 0 5px 7px 0 rgba(50, 50, 50, 0.75)
 
-.payment-method-next
-  display: flex
-  .payment-method-next-fluid
-    flex-basis: 25%
-    width: 100%
-
-  .payment-method-next-btn
-    flex-basis: 75%
-    width: 100%
-    text-align: center
-    button
-      width: 50%
-      background-color: $appDarkBlue
-      border: 0
-      color: $appLight
-      padding: 10px 0
-      border-radius: 5px
-      transition: background-color linear .1s
-      &:hover
-        cursor: pointer
-        background-color: $appBlue
+.payment-btn
+  display: block
+  margin: 0 auto
+  padding: .5rem

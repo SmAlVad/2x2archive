@@ -10,6 +10,20 @@
 
     </div>
 
+    {{-- Хлебные крошки --}}
+    <ul class="app-breadcrumb">
+        <li class="app-breadcrumb-item">
+            <a href="{{ route('index') }}">Главная</a>
+        </li>
+        <li class="app-breadcrumb-item">
+            <a href="{{ route('advert-index') }}">Обьявления</a>
+        </li>
+        <li class="app-breadcrumb-active">
+            Поиск
+        </li>
+    </ul>
+
+
     {{--Result--}}
     <div class="adv-search-result">
 

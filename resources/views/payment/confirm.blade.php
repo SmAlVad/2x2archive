@@ -1,7 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container py-4">
+    {{-- Хлебные крошки --}}
+    <ul class="app-breadcrumb">
+        <li class="app-breadcrumb-item">
+            <a href="{{ route('index') }}">Главная</a>
+        </li>
+        <li class="app-breadcrumb-item">
+            <a href="{{ route('payment-index') }}">Купить ключ</a>
+        </li>
+        <li class="app-breadcrumb-active">
+            Подтвеждение
+        </li>
+    </ul>
+
+    <div class="container">
         <div class="row">
             <div class="col-xl-12">
                 <h2>Тут что обьяснение</h2>
