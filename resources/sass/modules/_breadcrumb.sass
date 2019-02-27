@@ -1,0 +1,25 @@
+.app-breadcrumb
+  display: flex
+  list-style-type: none
+  padding: 2px 10px 2px 3rem
+
+  li
+    &:first-child
+      &:before
+        display: none
+
+    &:before
+      display: inline-block
+      padding-right: .5rem
+      padding-left: .5rem
+      color: $appDarkBlue
+      content: "/"
+
+  .app-breadcrumb-item
+    a
+      color: $appBlue
+      &:hover
+        text-decoration: none
+
+  .app-breadcrumb-active
+    color: $dark + 60%

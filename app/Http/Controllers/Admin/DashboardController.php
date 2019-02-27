@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Csfd;
 
 /**
  * Class DashboardController
@@ -17,6 +19,9 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $advert = Csfd::count();
+        $users = User::count();
+
+        return view('admin.dashboard', compact('advert','users'));
     }
 }
