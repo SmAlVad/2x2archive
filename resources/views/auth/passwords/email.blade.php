@@ -1,11 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+{{-- Хлебные крошки --}}
+<ul class="app-breadcrumb">
+    <li class="app-breadcrumb-item">
+        <a href="{{ route('index') }}">Главная</a>
+    </li>
+    <li class="app-breadcrumb-active">
+        Восстановление пароля
+    </li>
+</ul>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header">{{ __('Восстановление пароля') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -18,7 +28,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Ваш E-mail') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
@@ -33,8 +43,8 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
+                                <button type="submit" class="app-btn">
+                                    {{ __('Восстановить пароль') }}
                                 </button>
                             </div>
                         </div>

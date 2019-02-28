@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+{{-- Хлебные крошки --}}
+<ul class="app-breadcrumb">
+    <li class="app-breadcrumb-item">
+        <a href="{{ route('index') }}">Главная</a>
+    </li>
+    <li class="app-breadcrumb-active">
+        Авторизация
+    </li>
+</ul>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -53,12 +63,12 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="app-btn">
                                     {{ __('Войти') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="app-link" href="{{ route('password.request') }}">
                                         {{ __('Забыли пароль?') }}
                                     </a>
                                 @endif
