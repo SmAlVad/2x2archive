@@ -12,9 +12,19 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.sass', 'public/css');
+    .extract(['vue', 'jquery', 'bootstrap', 'axios', 'lodash', 'popper.js']);
+
+
+mix.sass('resources/sass/app.sass', 'public/css');
+
 
 mix.browserSync({
     proxy: 'archive.l',
     notify: false,
 });
+
+
+
+if (mix.inProduction()) {
+    mix.version();
+}

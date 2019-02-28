@@ -11,7 +11,7 @@ require('@fortawesome/fontawesome-free/js/all');
 
 window.Vue = require('vue');
 
-require('./custom');
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -36,23 +36,5 @@ const app = new Vue({
     el: '#app'
 });
 
-// const Inputmask = require('inputmask');
-//
-// const billInn = document.getElementById("bill-inn");
-// const billKp = document.getElementById("bill-kp");
-// const billAccount = document.getElementById("bill-account");
-// const billBik = document.getElementById("bill-bik");
-// const billKs = document.getElementById("bill-ks");
-// const billPhone = document.getElementById("bill-phone");
-//
-// const im9 = new Inputmask("999999999");
-// const im10 = new Inputmask("9999999999");
-// const im20 = new Inputmask("99999999999999999999");
-// const imPhone = new Inputmask("+7 (999) 999-99-99");
-//
-// im9.mask(billKp);
-// im9.mask(billBik);
-// im10.mask(billInn);
-// im20.mask(billAccount);
-// im20.mask(billKs);
-// imPhone.mask(billPhone);
+
+require('./custom');
