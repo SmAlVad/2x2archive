@@ -24,6 +24,8 @@
         </main>
     </div>
 
+    @include('partials.footer')
+
     <!-- Scripts -->
     <script src="{{ mix('js/manifest.js') }}" defer></script>
     <script src="{{ mix('js/vendor.js') }}" defer></script>

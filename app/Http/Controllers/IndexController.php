@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\PaymentMethod;
 use App\Models\Rate;
 
 /**
@@ -16,6 +17,9 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('index');
+        return view('index', [
+            'rates'             => Rate::all(),
+            'paymentMethods'    => PaymentMethod::where('on_off', 1)->get()
+        ]);
     }
 }

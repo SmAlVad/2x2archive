@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "inputmask": "^4.0.6",
+        "slick-carousel": "^1.8.1",
         "vue-ctk-date-time-picker": "^1.4.2",
         "vue-masked-input": "^0.5.2"
     }

@@ -15,7 +15,7 @@ mix.js('resources/js/app.js', 'public/js')
     .extract(['vue', 'jquery', 'bootstrap', 'axios', 'lodash', 'popper.js']);
 
 
-mix.sass('resources/sass/app.sass', 'public/css');
+mix.sass('resources/sass/app.sass', 'public/css').options({ processCssUrls: false });
 
 
 mix.browserSync({

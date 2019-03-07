@@ -9,6 +9,9 @@ require('./bootstrap');
 
 require('@fortawesome/fontawesome-free/js/all');
 
+// Slick carousel
+require('slick-carousel/slick/slick');
+
 window.Vue = require('vue');
 
 

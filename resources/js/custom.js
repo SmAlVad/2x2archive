@@ -34,4 +34,13 @@ $(document).ready(function () {
     im20.mask($('#bill-ks'));
     imPhone.mask($('#bill-phone'));//<<
 
+
+
+    //>> Slick slider
+    $('.slider').slick({
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
+    });//<<
+
 });
