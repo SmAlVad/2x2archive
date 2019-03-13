@@ -7,10 +7,13 @@
                     <h5>Информация</h5>
                     <ul class="footer-block-list">
                         <li>
-                            <a href="#">Правила пользования сервисом</a>
+                            <a href="{{ route('rules') }}">Правила пользования сервисом</a>
                         </li>
                         <li>
                             <a href="#">Условия публичного использования материалов</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('personal-info') }}">Защита персональных данных</a>
                         </li>
                     </ul>
                 </div>
@@ -69,6 +72,9 @@
                 <div class="footer-block">
                     <ul class="footer-block-list">
                         <li>
+                            Телефон специалистов техподдержки: <br /> +7 (968) 246-23-15
+                        </li>
+                        <li>
                             Издательский дом «Дважды два» <br /> г. Благовещенск, ул. Зейская, 229.
                         </li>
                         <li>
@@ -81,7 +87,7 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-xl-10">
+            <div class="col-xl-8 pt-3">
                 <div class="footer-info">
                     <p>
                         Сетевое издание «Полезный портал 2x2.su» зарегистрировано Федеральной службой по надзору в сфере связи,
@@ -99,6 +105,9 @@
                     </p>
 
                 </div>
+            </div>
+            <div class="col-xl-2 pt-3">
+                @include('partials.yandexmetrika')
             </div>
         </div>
     </div>

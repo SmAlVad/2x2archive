@@ -59,6 +59,16 @@ Route::group(['prefix' => 'payment'], function () {
 });
 
 
+// Страница защиты персональных данных
+Route::get('/personal-information', function () {
+    return view('personal-information');
+})->name('personal-info');
+
+// Страница защиты персональных данных
+Route::get('/rules', function () {
+    return view('rules');
+})->name('rules');
+
 /*
 |--------------------------------------------------------------------------
 | BACK SIDE
