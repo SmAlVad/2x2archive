@@ -40,21 +40,19 @@
     </div>
 
     {{-- Vue component Тэги --}}
-    <div class="adv-search-form-input">
+    <!--<div class="adv-search-form-input">
         <div class="">
             <label for="tags">Тэги</label>
         </div>
         <input type="text" id="tags" name="tags" placeholder="2-комн, собственник">
-    </div>
+    </div>-->
 
     {{--Цена от--}}
     <div class="adv-search-form-input">
         <div class="">
             <label for="start-price">Цена от</label>
         </div>
-        <input type="number" id="start-price"
-               name="start-price" min="0"
-               placeholder="в рублях">
+        <input type="number" id="start-price" name="start-price" min="0" placeholder="в рублях">
     </div>
 
     {{--Цена до--}}
@@ -66,12 +64,12 @@
     </div>
 
     {{--Телефон--}}
-    <div class="adv-search-form-input">
+    <!--<div class="adv-search-form-input">
         <div class="">
             <label for="phone">Телефон</label>
         </div>
         <input type="tel" id="phone" name="phone" pattern="[0-9]{4-11}">
-    </div>
+    </div>-->
 
     <button class="btn-search" type="submit">Искать</button>
 

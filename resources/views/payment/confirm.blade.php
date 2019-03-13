@@ -14,19 +14,12 @@
         </li>
     </ul>
 
-    <div class="container">
+    <div class="container mb-5" id="payment-confirm-block">
         <div class="row">
             <div class="col-xl-12">
-                <h2>Тут что обьяснение</h2>
-                <p>После нажатия кнопки, ла ла ла</p>
+                <h2>Подтвержденине</h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, quisquam.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, quisquam.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, quisquam.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, quisquam.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, quisquam.
+                    После успешной оплаты вы попадете в Личный кабинет. Там вы сможете активировать ключ доступа.
                 </p>
             </div>
             <div class="col-xl-12 text-center">

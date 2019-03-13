@@ -15,7 +15,7 @@ class IndexController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('index', [
             'rates'             => Rate::all(),

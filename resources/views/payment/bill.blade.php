@@ -2,7 +2,20 @@
 
 @section('content')
     <div class="container-fluid" id="billForm">
-        <div class="row justify-content-center py-4">
+        {{-- Хлебные крошки --}}
+        <ul class="app-breadcrumb">
+            <li class="app-breadcrumb-item">
+                <a href="{{ route('index') }}">Главная</a>
+            </li>
+            <li class="app-breadcrumb-item">
+                <a href="{{ route('payment-index') }}">Купить ключ</a>
+            </li>
+            <li class="app-breadcrumb-active">
+                Выставить счет
+            </li>
+        </ul>
+
+        <div class="row justify-content-center mb-5">
             <div class="col-xl-6">
                 <h3>Внесите данные вашей организации для выставления счета</h3>
 

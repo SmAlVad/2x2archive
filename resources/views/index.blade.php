@@ -52,24 +52,31 @@
 
     {!! Form::open(['route' => 'payment-confirm', 'method' => 'GET']) !!}
     <div class="container-fluid mb-5">
-        <div class="row justify-content-center">
+
+        <div class="row justify-content-center mb-5">
             <div class="col-xl-10 text-center">
-                <h3>Подписка</h3>
+                <h3>Получение доступа </h3>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad blanditiis debitis dolor nemo rem repudiandae
-                    voluptatibus. Doloribus laboriosam quasi sed.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-                    blanditiis debitis dolor nemo rem repudiandae voluptatibus. Doloribus laboriosam quasi sed.
+                    При регистрации на сайте предоставляется бесплатный доступ к Архиву объявлений и Архиву газет на 24 часа.
+                </p>
+                <p>
+                    После необходимо выбрать один из тарифов и приобрести ключ доступа для дальнейшего пользования ресурсом.
                 </p>
             </div>
+        </div>
 
+        <div class="row justify-content-center">
             <div class="col-xl-10 text-center">
                 <div class="select-rate-title">
                     <h3>Выберите тариф</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, ullam.</p>
+                    <p>
+                        Отсчет времени пользования начнется с момента активации ключа в Личном кабинете.
+                        Там же вы сможете увидеть оставшееся время.
+                    </p>
                 </div>
             </div>
             {{-- Список тарифов --}}
-            <div class="col-xl-10 mb-2">
+            <div class="col-xl-10 mb-5">
                 <div class="select-rate">
                     @foreach($rates as $rate)
                         <div class="select-rate-radio-container">
@@ -89,12 +96,11 @@
 
             <div class="col-xl-10 text-center">
                 <div class="payment-method-title">
-                    <h3>Выберите способ оплаты</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, ullam.</p>
+                    <h3>Выберите удобный способ оплаты</h3>
                 </div>
             </div>
             {{-- Способы оплаты --}}
-            <div class="col-xl-10 mb-4">
+            <div class="col-xl-10 mb-5">
                 <div class="payment-method">
                     @foreach($paymentMethods as $pM)
                         <div class="payment-method-container">

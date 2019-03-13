@@ -12,7 +12,7 @@
     </ul>
 
     {!! Form::open(['route' => 'payment-confirm', 'method' => 'GET']) !!}
-    <div class="container-fluid">
+    <div class="container-fluid mb-5">
         <div class="row justify-content-center">
             <div class="col-xl-10 text-center">
                 <h3>Подписка</h3>

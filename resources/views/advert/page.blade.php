@@ -83,12 +83,10 @@
 
     @isset($show_explain)
         <div class="adv-search-explain">
-            <h3>
-                Тут надо обьяснить простыми словами как пользоваться поиском
-            </h3>
-            <h3>
-                Нажмите на <i class="fas fa-bars"></i> для отображения списка категорий
-            </h3>
+            <div class="">
+                <h5>Заполните необходимые поля</h5>
+                <img src="{{ asset('image/read.png') }}" alt="">
+            </div>
         </div>
     @endisset
 

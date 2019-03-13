@@ -12,7 +12,7 @@
         </li>
     </ul>
 
-    <div class="container">
+    <div class="container" id="personal-office-block">
         {{-- Блок вывода уведомлений --}}
         <div class="row">
             <div class="col-xl-12">
@@ -36,11 +36,14 @@
                 <div class="home-block">
                     <div class="container">
                         <div class="row">
-                            <div class="col-xl-6">
+                            <div class="col-xl-4">
                                 <span>Пользователь:</span>&nbsp;<strong>{{ Auth::user()->name }}</strong>
                             </div>
-                            <div class="col-xl-6">
+                            <div class="col-xl-4">
                                 <span>E-mail:</span>&nbsp;<strong>{{ Auth::user()->email }}</strong>
+                            </div>
+                            <div class="col-xl-4">
+                                <span>Окончание подписки:</span>&nbsp;<strong>{{ Auth::user()->time }}</strong>
                             </div>
                         </div>
                     </div>
@@ -76,7 +79,8 @@
                     <div class="home-block">
                         <h3>Есть не активированные ключи</h3>
                         <p>
-                            Вы можете активировать их в любое время. Время ключа добавится к текущему времени подписки.
+                            Вы можете активировать ключ в любое удобное время. Нажав на кнопку «Активировать», начнется отсчет времени пользования.
+                            Если у вас уже есть активированные ключи, то время нового ключа добавится к уже существующему.
                         </p>
                         <table class="table table-hover">
                             <thead>

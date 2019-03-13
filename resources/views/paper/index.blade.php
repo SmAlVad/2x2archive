@@ -11,7 +11,7 @@
         </li>
     </ul>
 
-    <div class="container-fluid">
+    <div class="container-fluid mb-5" id="paper-select-block">
         <div class="row">
             <div class="col-xl-4">
                 @isset($pdfs)

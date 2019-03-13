@@ -14,7 +14,7 @@
         </li>
     </ul>
 
-    <div class="container-fluid pt-2">
+    <div class="container-fluid pt-2 mb-5">
         <div class="row">
             <div class="col-xl-12">
                 <iframe src="/storage/pdf/{{ $pdf->file_name }}" width="100%" height="800">

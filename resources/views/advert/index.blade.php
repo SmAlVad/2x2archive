@@ -11,7 +11,7 @@
         </li>
     </ul>
 
-    <div class="container">
+    <div class="container mb-5" id="advert-select-block">
         <div class="row">
 
             <div class="col-xl-6">
@@ -147,7 +147,48 @@
                     </div>
                     <div class="advert-category-list-items">
                         <ul>
-                            <li><a href="#">Все услуги?????</a></li>
+                            <li>
+                                <a href="{{ route('advert-page', ['section_id' => 1, 'type_id' => 277]) }}">Юридические</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('advert-page', ['section_id' => 1, 'type_id' => 1076]) }}">Изготовление и ремонт мебели</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('advert-page', ['section_id' => 1, 'type_id' => 1094]) }}">Грузоперевозки</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('advert-page', ['section_id' => 1, 'type_id' => 1127]) }}">Установка, ремонт бытовой техники</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('advert-page', ['section_id' => 1, 'type_id' => 1129]) }}">Услуги по уходу</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('advert-page', ['section_id' => 1, 'type_id' => 1130]) }}">Образовательные</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('advert-page', ['section_id' => 1, 'type_id' => 1132]) }}">Компьютерные</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('advert-page', ['section_id' => 1, 'type_id' => 1135]) }}">Праздничные</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('advert-page', ['section_id' => 1, 'type_id' => 1136]) }}">Услуги по красоте</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('advert-page', ['section_id' => 1, 'type_id' => 1138]) }}">Бухгалтерские</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('advert-page', ['section_id' => 1, 'type_id' => 1140]) }}">Услуги по прописке</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('advert-page', ['section_id' => 1, 'type_id' => 1158]) }}">Пошив, ремонт одежды</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('advert-page', ['section_id' => 1, 'type_id' => 1230]) }}">Строительные</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('advert-page', ['section_id' => 1, 'type_id' => 1141]) }}">Прочие</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -216,7 +257,13 @@
                             </li>
                             <li><a href="{{ route('advert-page', ['section_id' => 1187, 'type_id' => 1190]) }}">Отдам</a>
                             </li>
-                            <li><a href="#">Другоe??????</a></li>
+
+                            <li><a href="{{ route('advert-page', ['section_id' => 1187, 'type_id' => 1191]) }}">Возьму в дар</a>
+                            </li>
+                            <li><a href="{{ route('advert-page', ['section_id' => 1187, 'type_id' => 1192]) }}">Вязка</a>
+                            </li>
+                            <li><a href="{{ route('advert-page', ['section_id' => 1187, 'type_id' => 1193]) }}">Услуги для животных</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
