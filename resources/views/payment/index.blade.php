@@ -14,19 +14,18 @@
     {!! Form::open(['route' => 'payment-confirm', 'method' => 'GET']) !!}
     <div class="container-fluid mb-5">
         <div class="row justify-content-center">
-            <div class="col-xl-10 text-center">
+{{--            <div class="col-xl-10 text-center">
                 <h3>Подписка</h3>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad blanditiis debitis dolor nemo rem repudiandae
                     voluptatibus. Doloribus laboriosam quasi sed.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
                     blanditiis debitis dolor nemo rem repudiandae voluptatibus. Doloribus laboriosam quasi sed.
                 </p>
-            </div>
+            </div>--}}
 
             <div class="col-xl-10 text-center">
                 <div class="select-rate-title">
                     <h3>Выберите тариф</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, ullam.</p>
                 </div>
             </div>
             {{-- Список тарифов --}}
@@ -36,7 +35,7 @@
                         <div class="select-rate-radio-container">
                             <div class="radio-btn">
                                 <input type="radio" name="rate" id="rate-{{ $rate->id }}" value="{{ $rate->id }}"
-                                        {{ ($rate->name == 'Расширенный') ? 'checked' : '' }}>
+                                        {{ ($rate->name == 'Стандарт') ? 'checked' : '' }}>
                                 <label for="rate-{{ $rate->id }}">
                                     <h3>{{ $rate->name  }}</h3>
                                     Часов: {{ $rate->time }} <br/>
@@ -51,7 +50,6 @@
             <div class="col-xl-10 text-center">
                 <div class="payment-method-title">
                     <h3>Выберите способ оплаты</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, ullam.</p>
                 </div>
             </div>
             {{-- Способы оплаты --}}

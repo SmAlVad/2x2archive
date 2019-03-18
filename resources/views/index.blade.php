@@ -56,12 +56,12 @@
         <div class="row justify-content-center mb-5">
             <div class="col-xl-10 text-center">
                 <h3>Получение доступа </h3>
-                <p>
+{{--                <p>
                     При регистрации на сайте предоставляется бесплатный доступ к Архиву объявлений и Архиву газет на 24 часа.
                 </p>
                 <p>
                     После необходимо выбрать один из тарифов и приобрести ключ доступа для дальнейшего пользования ресурсом.
-                </p>
+                </p>--}}
             </div>
         </div>
 
@@ -69,10 +69,10 @@
             <div class="col-xl-10 text-center">
                 <div class="select-rate-title">
                     <h3>Выберите тариф</h3>
-                    <p>
+{{--                    <p>
                         Отсчет времени пользования начнется с момента активации ключа в Личном кабинете.
                         Там же вы сможете увидеть оставшееся время.
-                    </p>
+                    </p>--}}
                 </div>
             </div>
             {{-- Список тарифов --}}
@@ -82,7 +82,7 @@
                         <div class="select-rate-radio-container">
                             <div class="radio-btn">
                                 <input type="radio" name="rate" id="rate-{{ $rate->id }}" value="{{ $rate->id }}"
-                                    {{ ($rate->name == 'Расширенный') ? 'checked' : '' }}>
+                                    {{ ($rate->name == 'Стандарт') ? 'checked' : '' }}>
                                 <label for="rate-{{ $rate->id }}">
                                     <h3>{{ $rate->name  }}</h3>
                                     Часов: {{ $rate->time }} <br/>
