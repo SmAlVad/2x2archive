@@ -81,3 +81,65 @@
         color: $appDarkBlue
         &:hover
           color: $appBlue
+
+
+// Версия 2
+.paper-search
+    background-color: $appLightBlue
+    padding: 8px 0 4px 0
+    color: $appDarkBlue
+
+    .paper-search-select
+
+        label
+            margin-right: 10px
+            text-transform: uppercase
+
+        select
+            background-color: $appLight
+            border: 0
+            color: $appDarkBlue
+            padding: 3px 10px
+
+    .search-paper-submit-btn
+        background-color: $appDarkBlue
+        color: $appLight
+        border: 0
+        border-radius: 3px
+        padding: 3px 10px
+        text-transform: uppercase
+        &:hover
+            background-color: $appBlue
+            cursor: pointer
+
+.search-paper-result
+    min-height: 600px
+
+    .result-pdf
+        display: block
+        width: 100%
+        min-height: 150px
+        background: linear-gradient(to bottom, $appDarkBlue, $appBlue)
+        padding: 10px
+        color: $appLight
+        border-radius: 3px
+        margin-bottom: 1rem
+
+        &:hover
+            text-decoration: none
+            cursor: pointer
+            box-shadow: 0 5px 7px 0 rgba(50, 50, 50, 0.75)
+
+        ul
+            list-style-type: none
+            margin: 0
+            padding: 0
+            text-align: center
+
+            .pdf-number
+                font-size: 1.5rem
+                font-weight: 900
+                text-align: center
+
+            .pdf-project
+                font-size: .7rem

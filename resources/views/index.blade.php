@@ -8,13 +8,13 @@
         <div class="slider-item slider-item-1">
             <div class="slider-info">
                 <div class="s-title">
-                    <h1>Продающий слоган 1</h1>
+                    <h1><span class="s-accent">1 500 000</span> объявлений в Архиве</h1>
                 </div>
                 <div class="s-desc">
-                    <p>Продающиее описание</p>
+                    <p>База объявлений постоянно обновляется</p>
                 </div>
                 <div class="s-action">
-                    <a href="#" class="app-btn">действие 1</a>
+                    <a href="{{ route('advert-index') }}" class="app-btn">объявления</a>
                 </div>
             </div>
         </div>
@@ -22,13 +22,13 @@
         <div class="slider-item slider-item-2">
             <div class="slider-info">
                 <div class="s-title">
-                    <h1>Продающий слоган 2</h1>
+                    <h1><span class="s-accent">700</span> выпусков</h1>
                 </div>
                 <div class="s-desc">
-                    <p>Продающиее описание</p>
+                    <p>самых читаемых газет Приамурья</p>
                 </div>
                 <div class="s-action">
-                    <a href="#" class="app-btn">действие 2</a>
+                    <a href="{{ route('paper-index') }}" class="app-btn">газеты</a>
                 </div>
             </div>
         </div>
@@ -36,14 +36,14 @@
         <div class="slider-item slider-item-3">
             <div class="slider-info">
                 <div class="s-title">
-                    <h1>Продающий слоган 3</h1>
+                    <h1>Удобно. <span class="s-accent">Функционально.</span> Практично.</h1>
                 </div>
                 <div class="s-desc">
-                    <p>Продающиее описание</p>
+                    <p>Полная база данных на любом устройстве </p>
                 </div>
-                <div class="s-action">
+{{--                <div class="s-action">
                     <a href="#" class="app-btn">действие 3</a>
-                </div>
+                </div>--}}
             </div>
         </div>
 

@@ -43,4 +43,17 @@ $(document).ready(function () {
         autoplaySpeed: 5000,
     });//<<
 
+
+
+    //>> Flash сообщение
+    let flash = $('.flash');
+
+    if (flash.length > 0) {
+        flash.addClass('flash-active');
+
+        setTimeout(function () {
+            flash.removeClass('flash-active')
+        }, 5000);
+    }//<<
+
 });

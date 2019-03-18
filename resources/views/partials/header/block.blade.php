@@ -5,7 +5,7 @@
         <div class="col-xl-2">
             <div class="navbar-brand">
                 <a href="{{ url('/') }}">
-                    {{ config('app.name') }}
+                    <img src="/image/logo_1.svg" alt="Архив газеты 2x2" height="60px">
                 </a>
             </div>
         </div>
@@ -20,7 +20,5 @@
             @include('partials.header.auth')
         </div>
     </div>
-
-
 
 </div>

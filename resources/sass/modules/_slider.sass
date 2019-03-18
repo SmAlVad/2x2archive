@@ -2,39 +2,49 @@
     width: 100%
     margin-bottom: 3%
 
+
     .slider-item
         width: 100%
-        height: 100%
-        padding: 15% 0
+        height: 596px
 
         display: flex
         align-items: center
         justify-content: center
 
         .slider-info
+            width: 50%
+            height: 100%
+            margin: 0 auto
+            background-color: rgba(63, 114, 175, .6)
+            padding-top: 12%
 
             .s-title
                 text-align: center
-                color: $appDarkBlue
+                color: $appLight
 
             .s-desc
                 text-align: center
                 font-size: 1.5rem
+                color: $appLight
 
             .s-action
                 text-align: center
 
+            .s-accent
+                color: $appDarkBlue
+                font-weight: 900
+
     .slider-item-1
         background:
-            image: url("../image/slider/1.jpeg")
+            image: url("../image/slider/1.jpg")
             repeat: no-repeat
-            size: cover
+            size: contain
 
     .slider-item-2
         background:
-            image: url("../image/slider/2.jpeg")
+            image: url("../image/slider/2.jpg")
             repeat: no-repeat
-            size: cover
+            size: contain
 
     .slider-item-3
         background:
