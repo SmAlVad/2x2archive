@@ -2,16 +2,22 @@
 
     <div class="row">
         {{-- Логотип --}}
-        <div class="col-xl-2">
+        <div class="col-xl-3">
             <div class="navbar-brand">
-                <a href="{{ url('/') }}">
+
+                @if(\Request::route()->getName() == 'index')
                     <img src="/image/logo_1.svg" alt="Архив газеты 2x2" height="60px">
-                </a>
+                @else
+                    <a href="{{ url('/') }}">
+                        <img src="/image/logo_1.svg" alt="Архив газеты 2x2" height="60px">
+                    </a>
+                @endif
+
             </div>
         </div>
 
         {{-- Навигация главная --}}
-        <div class="col-xl-8">
+        <div class="col-xl-7">
             @include('partials.header.nav')
         </div>
 

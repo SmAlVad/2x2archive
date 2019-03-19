@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Carbon;
+use App\Notifications\ResetPassword;
 
 class User extends Authenticatable
 {
@@ -39,5 +40,16 @@ class User extends Authenticatable
     public function hasTime()
     {
         return ($this->time < Carbon::now()) ? false : true;
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
     }
 }

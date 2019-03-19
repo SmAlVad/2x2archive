@@ -8,7 +8,7 @@
         <div class="slider-item slider-item-1">
             <div class="slider-info">
                 <div class="s-title">
-                    <h1><span class="s-accent">1 500 000</span> объявлений в Архиве</h1>
+                    <h1><span class="s-accent">{{ $countOfAllAdvert }}</span> объявлений в Архиве</h1>
                 </div>
                 <div class="s-desc">
                     <p>База объявлений постоянно обновляется</p>
@@ -22,7 +22,7 @@
         <div class="slider-item slider-item-2">
             <div class="slider-info">
                 <div class="s-title">
-                    <h1><span class="s-accent">700</span> выпусков</h1>
+                    <h1><span class="s-accent">{{ $countOfAllPdfs }}</span> выпусков</h1>
                 </div>
                 <div class="s-desc">
                     <p>самых читаемых газет Приамурья</p>
