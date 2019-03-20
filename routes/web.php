@@ -75,7 +75,7 @@ Route::get('/rules', function () {
 |--------------------------------------------------------------------------
 */
 // Админка сайта
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'role:admin|manager',]], function (){
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'role:admin|designer',]], function (){
 
     // Главная страница - Dashboard
     Route::get('/', 'DashboardController@dashboard')->name('admin.index');
