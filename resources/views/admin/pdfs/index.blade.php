@@ -15,11 +15,10 @@
         <thead>
         <tr>
             <th>Проект</th>
-            <th>Имя файла</th>
-            <th>Год</th>
-            <th>Месяц</th>
-            <th>День</th>
             <th>Номер</th>
+            <th>Число</th>
+            <th>Месяц</th>
+            <th>Год</th>
             <th>Загружен</th>
             <th>Кем</th>
             <th>Действия</th>
@@ -29,11 +28,10 @@
         @forelse($pdfs as $pdf)
             <tr>
                 <td>{{ $pdf->project->name }}</td>
-                <td>{{ $pdf->file_name }}</td>
-                <td>{{ $pdf->year }}</td>
-                <td>{{ \App\Models\Pdf::getStringMonth($pdf->month) }}</td>
-                <td>{{ $pdf->day }}</td>
                 <td>{{ $pdf->number }}</td>
+                <td>{{ $pdf->day }}</td>
+                <td>{{ \App\Models\Pdf::getStringMonth($pdf->month) }}</td>
+                <td>{{ $pdf->year }}</td>
                 <td>{{ $pdf->created_at }}</td>
                 <td>{{ $pdf->created_by }}</td>
                 <td>

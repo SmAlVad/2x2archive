@@ -5,6 +5,25 @@
         <div class="container-fluid">
             <div class="row paper-search">
 
+                <div class="col-lg-1">
+                    <div class="paper-search-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-xl-3">
+                    <div class="paper-search-select">
+                        <label for="project">Издание</label>
+                        <select class="" id="project" name="project">
+                            @foreach(\App\Models\Project::orderBy('sort', 'DESK')->pluck('name', 'id')->all() as $k => $v)
+                                <option value="{{ $k }}" {{ ($k == $project_id) ? 'selected' : '' }}>
+                                    {{ $v }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
                 <div class="col-lg-2 col-xl-2">
                     <div class="paper-search-select">
                         <label for="year">Год</label>
@@ -31,20 +50,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-xl-2">
-                    <div class="paper-search-select">
-                        <label for="project">Издание</label>
-                        <select class="" id="project" name="project">
-                            @foreach(\App\Models\Project::pluck('name', 'id')->all() as $k => $v)
-                                <option value="{{ $k }}" {{ ($k == $project_id) ? 'selected' : '' }}>
-                                    {{ $v }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-xl-2 text-center">
+                <div class="col-lg-2 col-xl-2 text-left">
                     <button type="submit" class="search-paper-submit-btn">Показать</button>
                 </div>
 
@@ -62,10 +68,10 @@
         </li>
     </ul>
 
-    <div class="container-fluid search-paper-result">
+    <div class="container-fluid search-paper-result py-4">
         @isset($pdfs)
             <div class="row">
-                <div class="col-xl-12">
+                <div class="col-xl-9">
                     <h3>Результаты:</h3>
                 </div>
             </div>

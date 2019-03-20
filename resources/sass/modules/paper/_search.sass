@@ -86,8 +86,15 @@
 // Версия 2
 .paper-search
     background-color: $appLightBlue
-    padding: 8px 0 4px 0
+    padding: 12px 0 8px 0
     color: $appDarkBlue
+
+    .paper-search-icon
+        height: 100%
+        font-size: 1.5rem
+        display: flex
+        align-items: center
+        justify-content: center
 
     .paper-search-select
 
@@ -96,6 +103,7 @@
             text-transform: uppercase
 
         select
+            min-width: 60%
             background-color: $appLight
             border: 0
             color: $appDarkBlue

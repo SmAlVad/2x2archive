@@ -29,7 +29,7 @@ class PdfController extends Controller
      */
     public function create()
     {
-        $projects       = Project::pluck('name', 'id')->all();
+        $projects       = Project::orderBy('sort', 'DESK')->pluck('name', 'id')->all();
         $releaseYears   = Pdf::getReleaseYear();
         $releaseMonth   = Pdf::getReleaseMonth();
 

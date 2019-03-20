@@ -11,8 +11,8 @@
 
     <table class="table table-striped">
         <tr>
-            <th>No</th>
-            <th>Нозвание</th>
+            <th>#</th>
+            <th>Название</th>
             <th>Действия</th>
         </tr>
 
