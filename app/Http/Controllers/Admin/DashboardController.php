@@ -19,9 +19,6 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        $advert = Csfd::count();
-        $users = User::count();
-
         return view('admin.dashboard', compact('advert','users'));
     }
 }

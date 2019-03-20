@@ -12,10 +12,10 @@ class PdfController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:role-list');
-        $this->middleware('permission:role-create', ['only' => ['create','store']]);
-        $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:role-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:pdf-list');
+        $this->middleware('permission:pdf-create', ['only' => ['create','store']]);
+        $this->middleware('permission:pdf-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:pdf-delete', ['only' => ['destroy']]);
     }
 
     /**
