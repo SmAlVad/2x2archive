@@ -20,6 +20,8 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
+        ini_set('memory_limit', '6G');
+
         // Кэшируем общее количество обьявлений
         if (Cache::has('countOfAllAdverts')) {
             $countOfAllAdvert = Cache::get('countOfAllAdverts');
