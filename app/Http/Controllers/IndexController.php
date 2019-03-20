@@ -26,7 +26,9 @@ class IndexController extends Controller
         } else {
             $countOfAllAdvert = Csfd::get()->count();
 
-            Cache::store('redis')->put('countOfAllAdverts', $countOfAllAdvert, 86400);
+            $time = now()->addDay();
+
+            Cache::put('countOfAllAdverts', $countOfAllAdvert, $time);
         }
 
         // Кэшируем общее количество PDF газет
@@ -35,7 +37,9 @@ class IndexController extends Controller
         } else {
             $countOfAllPdfs = Pdf::get()->count();
 
-            Cache::store('redis')->put('countOfAllPdfs', $countOfAllPdfs, 86400);
+            $time = now()->addDay();
+
+            Cache::put('countOfAllPdfs', $countOfAllPdfs, $time);
         }
 
         return view('index', [
