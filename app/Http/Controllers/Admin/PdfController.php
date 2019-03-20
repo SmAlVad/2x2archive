@@ -10,6 +10,14 @@ use Illuminate\Support\Carbon;
 
 class PdfController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:role-list');
+        $this->middleware('permission:role-create', ['only' => ['create','store']]);
+        $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:role-delete', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

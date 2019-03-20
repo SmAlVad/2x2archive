@@ -9,6 +9,12 @@ use App\Models\Act;
 
 class AccountController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:account-list');
+        $this->middleware('permission:account-edit', ['only' => ['activate', 'cancelled']]);
+    }
+
     public function index()
     {
         return view('admin.account.index', [
