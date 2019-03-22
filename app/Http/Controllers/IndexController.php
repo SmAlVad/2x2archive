@@ -26,7 +26,7 @@ class IndexController extends Controller
         if (Cache::has('countOfAllAdverts')) {
             $countOfAllAdvert = Cache::get('countOfAllAdverts');
         } else {
-            $countOfAllAdvert = Csfd::get()->count();
+            $countOfAllAdvert = Csfd::count();
 
             $time = now()->addDay();
 
@@ -37,7 +37,7 @@ class IndexController extends Controller
         if (Cache::has('countOfAllPdfs')) {
             $countOfAllPdfs = Cache::get('countOfAllPdfs');
         } else {
-            $countOfAllPdfs = Pdf::get()->count();
+            $countOfAllPdfs = Pdf::count();
 
             $time = now()->addDay();
 

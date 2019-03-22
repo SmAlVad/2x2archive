@@ -5,7 +5,7 @@
     @include('admin.partials.errors')
     <h3>Добавление PDF</h3>
 
-    {!! Form::open(['route' => 'admin.pdf.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+    {!! Form::open(['route' => 'admin.pdf.store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-group']) !!}
     <div class="input-group">
         <div class="custom-file">
             {!! Form::file('file') !!}
@@ -19,9 +19,8 @@
 
     <div class="form-group">
         <label for="start-date">Дата:</label>
-        <input type="date" id="start-date" name="date" min="2014-01-01" max="{{ date('Y-m-d') }}" required>
+        <input type="date" id="start-date" name="date" min="2014-01-01" max="" required>
     </div>
-
 
     <div class="form-group">
         {!! Form::label('number', 'Номер издания') !!}

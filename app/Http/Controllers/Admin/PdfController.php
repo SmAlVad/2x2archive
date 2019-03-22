@@ -83,7 +83,8 @@ class PdfController extends Controller
         $pdf->save();
 
         return redirect()
-            ->route('admin.pdf.create');
+            ->route('admin.pdf.index')
+            ->with('success', 'Фаил успешно добавлен');
     }
 
     /**
