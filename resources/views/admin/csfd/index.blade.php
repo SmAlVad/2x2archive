@@ -4,14 +4,14 @@
 
     @include('admin.partials.success')
 
-    <h2>Форма для добавления обьявлений</h2>
+    <h2>Закрузка обьявлений</h2>
 
     <form action="{{ route('admin-csfd-add') }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
 
         <div class="form-group">
-            <input type="file" name="json">
+            <input type="file" name="csfds">
             <button class="btn btn-primary" type="submit">Загрузить</button>
         </div>
     </form>
