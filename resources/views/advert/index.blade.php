@@ -19,7 +19,7 @@
                 <div class="wrapper-advert-category">
                     <div class="advert-category">
                         <div class="advert-category-item"><i class="fas fa-home"></i></div>
-                        <div class="advert-category-title"><h4>Недвижемость</h4></div>
+                        <div class="advert-category-title"><h4>Недвижимость</h4></div>
                     </div>
                     <div class="advert-category-list-items">
                         <ul>

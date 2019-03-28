@@ -6,7 +6,7 @@
         <div class="card">
             <div id="heading-1">
                 <button class="slide-menu-link" type="button" data-toggle="collapse" data-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-                    Недвижемость
+                    Недвижимость
                 </button>
             </div>
 

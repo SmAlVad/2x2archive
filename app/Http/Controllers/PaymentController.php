@@ -142,10 +142,11 @@ class PaymentController extends Controller
 
         $timeNow    = Carbon::now();
 
-        $accounts   = Account::where('user_id', $userId)->orderBy('id','DESK')->get();
+        $orders   = Account::where('user_id', $userId)->where('is_paid',1)->orderBy('id','DESK')->get();
+        $accounts   = Order::where('user_id', $userId)->orderBy('id','DESK')->get();
         $keys       = Key::where('user_id', $userId)->where('active', 0)->get();
 
-        return view('home', compact('accounts','keys', 'timeNow'));
+        return view('home', compact('accounts','keys', 'timeNow', 'orders'));
 
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Account;
 use App\Models\Key;
@@ -27,6 +28,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        $orders     = Order::where('user_id', $request->user()->id)->where('is_paid',1)->orderBy('id','DESK')->get();
         $accounts   = Account::where('user_id', $request->user()->id)->orderBy('id','DESK')->get();
         $keys       = Key::where('user_id', $request->user()->id)->where('active', 0)->get();
 
@@ -35,7 +37,7 @@ class HomeController extends Controller
 
         $activeTime = $timeNow->diffForHumans(Carbon::parse($request->user()->time));
 
-        return view('home', compact('accounts','keys', 'timeNow', 'activeTime'));
+        return view('home', compact('accounts','keys', 'timeNow', 'activeTime', 'orders'));
     }
 
     public function setTime(Request $request)

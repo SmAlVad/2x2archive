@@ -72,7 +72,6 @@
                 </div>
             @endif
 
-
             {{-- Если есть ключи --}}
             @if(count($keys) !== 0)
                 <div class="col-xl-12">
@@ -171,6 +170,35 @@
                     </div>
                 </div>
             @endif
+
+            {{-- Если есть счета --}}
+            @php /** @var \App\Models\Order $orders **/@endphp
+            @isset($orders)
+                <div class="col-xl-12">
+                    <div class="home-block">
+                        <h3>Операции</h3>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Дата покупки</th>
+                                <th>Тариф</th>
+                                <th>Ключ №</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            @foreach($orders as $order)
+                                <tr>
+                                    <td>{{ $order->updated_at }}</td>
+                                    <td>{{ $order->rate->name }}</td>
+                                    <td>{{ $order->key->key }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            @endisset
         </div>
     </div>
 @endsection
