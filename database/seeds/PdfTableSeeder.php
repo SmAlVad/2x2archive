@@ -12,7 +12,7 @@ class PdfTableSeeder extends Seeder
      */
     public function run()
     {
-        $pdfs = Storage::files('public/pdf');
+        $pdfs = Storage::files('public/tmp_pdf');
 
         $data = [];
 
@@ -27,7 +27,7 @@ class PdfTableSeeder extends Seeder
                 'month'         => $file->month(),
                 'day'           => $file->day(),
                 'number'        => $file->number(),
-                'created_by'    => 'Admin',
+                'created_by'    => 'Авто-загрузка',
                 'created_at'    => now(),
                 'updated_at'    => now(),
             ];
