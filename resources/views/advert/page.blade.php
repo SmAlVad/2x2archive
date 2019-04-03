@@ -29,13 +29,19 @@
 
         @isset($adverts)
 
-            @if($adverts->total())
+{{--            @if($adverts->total())
                 <div class="adv-pagination-top">
                     {{$adverts->links()}}
                     <div class="">Формат даты: гггг-мм-дд</div>
                     <h5>Найдено:&nbsp;<span class="badge badge-success">{{ $adverts->total() }}</span>&nbsp;обьявлений</h5>
                 </div>
-            @endif
+            @endif--}}
+
+                @if($adverts->count())
+                    <div class="adv-pagination-top" style="float: right">
+                        <h5>Найдено:&nbsp;<span class="badge badge-success">{{ $adverts->count() }}</span>&nbsp;обьявлений</h5>
+                    </div>
+                @endif
 
                 <table class="table table-striped">
                 <thead>
@@ -48,7 +54,6 @@
                         <th>Телефон</th>
                         <th>E-mail</th>
                         <th>Подача</th>
-                        <th>Окончание</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,7 +67,6 @@
                         <td>{{ $advert->tel}}</td>
                         <td>{{ $advert->email }}</td>
                         <td>{{ $advert->date_start }}</td>
-                        <td>{{ $advert->date_end }}</td>
                     </tr>
                 @empty
                     <tr>
@@ -75,9 +79,9 @@
                 @endforelse
                 </tbody>
             </table>
-            <div class="adv-pagination-bottom">
+{{--            <div class="adv-pagination-bottom">
                 {{$adverts->links()}}
-            </div>
+            </div>--}}
         @endisset
     </div>
 

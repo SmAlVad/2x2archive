@@ -17,6 +17,7 @@
   justify-content: space-around
 
   .adv-search-form-input
+    position: relative
     flex-basis: (100% / 8)
     color: $appDarkBlue
 
@@ -33,6 +34,11 @@
 
     input
       @extend #input-subsection
+
+    .currency-label
+      position: absolute
+      bottom: 5px
+      right: 10px
 
   .btn-search
     background-color: $appDarkBlue

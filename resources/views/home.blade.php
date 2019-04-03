@@ -78,8 +78,10 @@
                     <div class="home-block">
                         <h3>Есть не активированные ключи</h3>
                         <p>
-                            Вы можете активировать ключ в любое удобное время. Нажав на кнопку «Активировать», начнется отсчет времени пользования.
-                            Если у вас уже есть активированные ключи, то время нового ключа добавится к уже существующему.
+                            Вы можете активировать ключ в любое удобное время. Нажав на кнопку «Активировать», начнется
+                            отсчет времени пользования.
+                            Если у вас уже есть активированные ключи, то время нового ключа добавится к уже
+                            существующему.
                         </p>
                         <table class="table table-hover">
                             <thead>
@@ -171,22 +173,21 @@
                 </div>
             @endif
 
-            {{-- Если есть счета --}}
-            @php /** @var \App\Models\Order $orders **/@endphp
-            @isset($orders)
-                <div class="col-xl-12">
-                    <div class="home-block">
-                        <h3>Операции</h3>
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th>Дата покупки</th>
-                                <th>Тариф</th>
-                                <th>Ключ №</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
+            {{-- История покупок --}}
+            <div class="col-xl-12">
+                <div class="home-block">
+                    <h3>Операции</h3>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Дата покупки</th>
+                            <th>Тариф</th>
+                            <th>Ключ №</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @php /** @var \App\Models\Order $orders **/@endphp
+                        @isset($orders)
                             @foreach($orders as $order)
                                 <tr>
                                     <td>{{ $order->updated_at }}</td>
@@ -194,11 +195,12 @@
                                     <td>{{ $order->key->key }}</td>
                                 </tr>
                             @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                        @endisset
+                        </tbody>
+                    </table>
                 </div>
-            @endisset
+            </div>
+
         </div>
     </div>
 @endsection

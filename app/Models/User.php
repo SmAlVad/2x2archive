@@ -37,6 +37,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Key');
     }
 
+    public function session()
+    {
+        return $this->belongsTo('App\Models\Session');
+    }
+
     public function hasTime()
     {
         return ($this->time < Carbon::now()) ? false : true;

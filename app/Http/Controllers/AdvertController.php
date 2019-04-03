@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Csfd;
 use App\Models\Category;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * Class AdvertController
@@ -51,48 +52,60 @@ class AdvertController extends Controller
     public function search(Request $request, $section_id, $type_id)
     {
         // Подтип
-        $subtype    = $request->input('subtype');
+        $subtype        = $request->input('subtype');
 
-        $date_start    = $request->input('date-start');
-        $date_end    = $request->input('date-end');
+        $date_start     = $request->input('date-start');
+        $date_end       = $request->input('date-end');
 
-        $start_price = ($request->input('start-price')) ? $request->input('start-price') : 0;
-        $end_price = $request->input('end-price');
+        $start_price = $request->input('start-price');
+
+        $variables = [];
 
 
-        $adverts = Csfd::where('cat1', $section_id)
-            ->where('date_start', '>=', $date_start)
-            ->where('date_end', '<=', $date_end)
-            ->where('price', '>=', $start_price)
-            ->where('cat2', $type_id)
-            ->where('cat3', $subtype)
-            ->paginate(10);
+        if ($request->input('end-price')) {
 
-        $adverts->appends(
+/*            ALTER TABLE `csfds` CHANGE `price` `price` INT(191) NOT NULL COMMENT 'Цена';*/
 
-            [
-                'subtype' => $subtype,
-                'date-start' => $date_start,
-                'date-end' => $date_end,
-                'start_price' => $start_price,
-            ]
+            $end_price = $request->input('end-price');
 
-        );
+            $adverts = Csfd::where('cat1', $section_id)
+                ->where('cat2', $type_id)
+                ->where('cat3', $subtype)
+                ->whereBetween('date_start', [$date_start, $date_end])
+                ->where('price', '>=', $start_price)
+                ->where('price', '<', $end_price)
+                ->get();
+
+            $variables += [ 'end_price' => $end_price ];
+
+        } else {
+
+            $adverts = Csfd::where('cat1', $section_id)
+                ->where('cat2', $type_id)
+                ->where('cat3', $subtype)
+                ->whereBetween('date_start', [$date_start, $date_end])
+                ->where('price', '>=', $start_price)
+                ->get();
+
+        }
+
 
         $section        = Category::find($section_id);
         $type           = Category::find($type_id);
         $subtypes       = Category::where('parent_id', $type_id)->get();
 
-        return view('advert.page', [
+        $variables += [
             'section'               => $section,
             'type'                  => $type,
             'subtypes'              => $subtypes,
             'selected_subtype'      => $subtype,
             'adverts'               => $adverts,
 
-            'date_start' => $date_start,
-            'date_end' => $date_end,
-            'start_price' => $start_price,
-        ]);
+            'date_start'            => $date_start,
+            'date_end'              => $date_end,
+            'start_price'           => $start_price
+        ];
+
+        return view('advert.page', $variables);
     }
 }
