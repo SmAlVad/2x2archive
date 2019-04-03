@@ -75,10 +75,19 @@ $(document).ready(function () {
 
     endDate.val(`${year}-${month}-${day}`);
 
+  });//<<
+
+
+  $('#start-price').on('change', function () {
+    if (this.value === '') {
+      this.value = 0;
+    }
   });
 
-});
+});//<< End ready
 
+
+//>> Получаем конечную дату поиска
 function getEndDate() {
   let startDate = $('#start-date');
   let inputValue = startDate.val().split('-');
@@ -107,12 +116,14 @@ function getEndDate() {
   }
 
   return `${year}-${month}-${day}`;
-}
+}//>>
 
 
+//>> Конвертирует date.getMonth() в нужный формат
 function getConvertMonthIndex(month) {
 
   switch (month) {
+    case 0: return '01';
     case 1: return '02';
     case 2: return '03';
     case 3: return '04';
@@ -127,4 +138,4 @@ function getConvertMonthIndex(month) {
     case 12: return '01';
   }
 
-}
+}//<<
