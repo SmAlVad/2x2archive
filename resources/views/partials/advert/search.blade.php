@@ -67,13 +67,14 @@
     <span class="currency-label">₽</span>
   </div>
 
-{{--Телефон--}}
-<!--<div class="adv-search-form-input">
-        <div class="">
-            <label for="phone">Телефон</label>
-        </div>
-        <input type="tel" id="phone" name="phone" pattern="[0-9]{4-11}">
-    </div>-->
+  {{--Телефон--}}
+  <div class="adv-search-form-input">
+      <div class="">
+          <label for="search-phone">Телефон</label>
+      </div>
+      <input type="text" id="search-phone" name="phone"
+             value="@if(isset($phone)){{ $phone }}@endif">
+  </div>
 
   <button class="btn-search" type="submit">Искать</button>
 

@@ -51,6 +51,9 @@ class AdvertController extends Controller
      */
     public function search(Request $request, $section_id, $type_id)
     {
+
+        //UPDATE `csfds` SET `tel` = REPLACE(tel, '+','') WHERE `id` = '101'
+
         // Подтип
         $subtype        = $request->input('subtype');
 
@@ -61,10 +64,8 @@ class AdvertController extends Controller
 
         $variables = [];
 
-
-        if ($request->input('end-price')) {
-
-/*            ALTER TABLE `csfds` CHANGE `price` `price` INT(191) NOT NULL COMMENT 'Цена';*/
+        // Если есть "Цена до" и нет телефона
+        if ($request->input('end-price') != null && $request->input('phone') == null) {
 
             $end_price = $request->input('end-price');
 
@@ -77,6 +78,36 @@ class AdvertController extends Controller
                 ->get();
 
             $variables += [ 'end_price' => $end_price ];
+
+        } elseif ($request->input('end-price') == null && $request->input('phone') != null) { // Нет "Цена до" и есть телефон
+
+          $phone = $request->input('phone');
+
+          $adverts = Csfd::where('cat1', $section_id)
+            ->where('cat2', $type_id)
+            ->where('cat3', $subtype)
+            ->whereBetween('date_start', [$date_start, $date_end])
+            ->where('price', '>=', $start_price)
+            ->where('tel', 'LIKE', "%$phone%")
+            ->get();
+
+          $variables += [ 'phone' => $phone ];
+
+        } elseif ($request->input('end-price') != null && $request->input('phone') != null) { // Есть "Цена до" и есть телефон
+
+          $end_price = $request->input('end-price');
+          $phone = $request->input('phone');
+
+          $adverts = Csfd::where('cat1', $section_id)
+            ->where('cat2', $type_id)
+            ->where('cat3', $subtype)
+            ->whereBetween('date_start', [$date_start, $date_end])
+            ->where('price', '>=', $start_price)
+            ->where('price', '<', $end_price)
+            ->where('tel', 'LIKE', "%$phone%")
+            ->get();
+
+          $variables += [ 'end_price' => $end_price, 'phone' => $phone ];
 
         } else {
 
