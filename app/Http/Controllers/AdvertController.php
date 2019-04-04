@@ -81,7 +81,7 @@ class AdvertController extends Controller
 
         } elseif ($request->input('end-price') == null && $request->input('phone') != null) { // Нет "Цена до" и есть телефон
 
-          $phone = $request->input('phone');
+          $phone = preg_replace( '/[^0-9]/', '', $request->input('phone'));
 
           $adverts = Csfd::where('cat1', $section_id)
             ->where('cat2', $type_id)
@@ -96,7 +96,7 @@ class AdvertController extends Controller
         } elseif ($request->input('end-price') != null && $request->input('phone') != null) { // Есть "Цена до" и есть телефон
 
           $end_price = $request->input('end-price');
-          $phone = $request->input('phone');
+          $phone = preg_replace( '/[^0-9]/', '', $request->input('phone'));
 
           $adverts = Csfd::where('cat1', $section_id)
             ->where('cat2', $type_id)
