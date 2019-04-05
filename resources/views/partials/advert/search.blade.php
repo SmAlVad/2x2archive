@@ -1,7 +1,10 @@
 <form action="{{ route('advert-search', ['section_id' => $section->id, 'type_id' => $type->id]) }}"
       method="GET"
-      class="adv-search-form">
+      id="adv-search-form">
   @csrf
+
+  <input type="hidden" name="section" value="{{ $section->id }}">
+  <input type="hidden" name="type" value="{{ $type->id }}">
 
   {{--Выбор категории 3-го уровня--}}
   <div class="adv-search-form-input">
@@ -76,6 +79,6 @@
              value="@if(isset($phone)){{ $phone }}@endif">
   </div>
 
-  <button class="btn-search" type="submit">Искать</button>
+  <button class="btn-search" type="submit">Поиск</button>
 
 </form>

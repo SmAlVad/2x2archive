@@ -13,130 +13,152 @@ use Illuminate\Pagination\LengthAwarePaginator;
  */
 class AdvertController extends Controller
 {
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function index()
-    {
-        return view('advert.index', [
-            'cats' => Category::where('parent_id', 0)->get()
-        ]);
-    }
+  /**
+   * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+   */
+  public function index()
+  {
+    return view('advert.index', [
+      'cats' => Category::where('parent_id', 0)->get()
+    ]);
+  }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function page(Request $request, $section_id, $type_id)
-    {
+  /**
+   * @param Request $request
+   * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+   */
+  public function page(Request $request, $section_id, $type_id)
+  {
 
-        $section        = Category::find($section_id);
-        $type           = Category::find($type_id);
-        $subtypes       = Category::where('parent_id', $type_id)->get();
+    $section = Category::find($section_id);
+    $type = Category::find($type_id);
+    $subtypes = Category::where('parent_id', $type_id)->get();
 
-        return view('advert.page', [
-            'section'               => $section,
-            'type'                  => $type,
-            'subtypes'              => $subtypes,
-            'selected_subtype'      => 0,
-            'show_explain'          => true,
-        ]);
-    }
+    return view('advert.page', [
+      'section' => $section,
+      'type' => $type,
+      'subtypes' => $subtypes,
+      'selected_subtype' => 0,
+      'show_explain' => true,
+    ]);
+  }
 
-    /**
-     * @param Request $request
-     * @param $section_id
-     * @param $type_id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function search(Request $request, $section_id, $type_id)
-    {
+  /**
+   * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+   */
+  public function search()
+  {
+    return view('advert.page');
+  }
 
-        //UPDATE `csfds` SET `tel` = REPLACE(tel, '+','') WHERE `id` = '101'
+  /**
+   * @param Request $request
+   * @return string
+   */
+  public function ajax_search(Request $request)
+  {
+    if ($request->ajax()) {
 
-        // Подтип
-        $subtype        = $request->input('subtype');
+      // TODO: Валидация данных
 
-        $date_start     = $request->input('date-start');
-        $date_end       = $request->input('date-end');
+      // Кадегории 1, 2, 3 уровня
+      $section_id   = $request->input('section');
+      $type_id      = $request->input('type');
+      $subtype      = $request->input('subtype');
 
-        $start_price = $request->input('start-price');
+      // Даты начала и конца поиска
+      $date_start   = $request->input('date-start');
+      $date_end     = $request->input('date-end');
 
-        $variables = [];
+      // Диапогон цены
+      $start_price  = $request->input('start-price');
+      $end_price    = $request->input('end-price');
 
-        // Если есть "Цена до" и нет телефона
-        if ($request->input('end-price') != null && $request->input('phone') == null) {
+      // Телефон
+      $phone        = $request->input('phone');
 
-            $end_price = $request->input('end-price');
+      // Оффсет
+      $offset       = ($request->has('offset')) ? $request->input('offset') : 0;
 
-            $adverts = Csfd::where('cat1', $section_id)
-                ->where('cat2', $type_id)
-                ->where('cat3', $subtype)
-                ->whereBetween('date_start', [$date_start, $date_end])
-                ->where('price', '>=', $start_price)
-                ->where('price', '<', $end_price)
-                ->get();
+      // Запрос в базу
+      $adverts = \DB::table('csfds')
+        ->where('cat1', $section_id)
+        ->where('cat2', $type_id)
+        ->where('cat3', $subtype)
+        ->whereBetween('date_start', [$date_start, $date_end])
+        ->where('price', '>=', $start_price);
 
-            $variables += [ 'end_price' => $end_price ];
+      // Если указана "Цена до"
+      if ($end_price !== null) {
+        $adverts->where('price', '<=', $end_price);
+      }
 
-        } elseif ($request->input('end-price') == null && $request->input('phone') != null) { // Нет "Цена до" и есть телефон
+      // Если указан "Телефон"
+      if ($phone !== null) {
+        $adverts->where('tel', 'LIKE', "%$phone%");
+      }
 
-          $phone = preg_replace( '/[^0-9]/', '', $request->input('phone'));
+      // Общее количество обьявлений
+      $all_adverts = $adverts->count();
+      // Получаем обьявления
+      $adverts = $adverts->offset($offset)->limit(50)->get();
 
-          $adverts = Csfd::where('cat1', $section_id)
-            ->where('cat2', $type_id)
-            ->where('cat3', $subtype)
-            ->whereBetween('date_start', [$date_start, $date_end])
-            ->where('price', '>=', $start_price)
-            ->where('tel', 'LIKE', "%$phone%")
-            ->get();
+      $content = "";
 
-          $variables += [ 'phone' => $phone ];
+      // Если есть обьявления
+      if ($adverts->count() > 0) {
 
-        } elseif ($request->input('end-price') != null && $request->input('phone') != null) { // Есть "Цена до" и есть телефон
-
-          $end_price = $request->input('end-price');
-          $phone = preg_replace( '/[^0-9]/', '', $request->input('phone'));
-
-          $adverts = Csfd::where('cat1', $section_id)
-            ->where('cat2', $type_id)
-            ->where('cat3', $subtype)
-            ->whereBetween('date_start', [$date_start, $date_end])
-            ->where('price', '>=', $start_price)
-            ->where('price', '<', $end_price)
-            ->where('tel', 'LIKE', "%$phone%")
-            ->get();
-
-          $variables += [ 'end_price' => $end_price, 'phone' => $phone ];
-
+        // Если есть в запросе не было параметра оффсет
+        if ($offset === 0) {
+          $content = "<table class=\"table table-striped search-result-table\">
+                <thead>
+                    <tr>
+                        <th width=\"10%\">Фото</th>
+                        <th>Заголовок</th>
+                        <th>Текст</th>
+                        <th width=\"5%\">Цена, ₽</th>
+                        <th>Имя</th>
+                        <th>Телефон</th>
+                        <th>E-mail</th>
+                        <th>Подача</th>
+                    </tr>
+                </thead>
+                <tbody>";
         } else {
-
-            $adverts = Csfd::where('cat1', $section_id)
-                ->where('cat2', $type_id)
-                ->where('cat3', $subtype)
-                ->whereBetween('date_start', [$date_start, $date_end])
-                ->where('price', '>=', $start_price)
-                ->get();
-
+          $content = "<table class=\"table table-striped search-result-table\"><tbody>";
         }
 
 
-        $section        = Category::find($section_id);
-        $type           = Category::find($type_id);
-        $subtypes       = Category::where('parent_id', $type_id)->get();
+        foreach ($adverts as $advert) {
+          $content .= "<tr>
+                        <td width=\"10%\"><img src=\"https://2x2.su/{$advert->image}\" alt=\"\"></td>
+                        <td>{$advert->title}</td>
+                        <td>{$advert->body}</td>
+                        <td width=\"5%\">{$advert->price}</td>
+                        <td>{$advert->name}</td>
+                        <td>{$advert->tel}</td>
+                        <td>{$advert->email}</td>
+                        <td>{$advert->date_start}</td>
+                    </tr>";
+        }
+      } else {
+        $content .= "<div class=\"empty-result\">
+                        <i class=\"far fa-frown\"></i>&nbsp;Ничего не найдено
+                     </div>";
+      }
 
-        $variables += [
-            'section'               => $section,
-            'type'                  => $type,
-            'subtypes'              => $subtypes,
-            'selected_subtype'      => $subtype,
-            'adverts'               => $adverts,
+      $content .= "</tbody></table>";
 
-            'date_start'            => $date_start,
-            'date_end'              => $date_end,
-            'start_price'           => $start_price
-        ];
-
-        return view('advert.page', $variables);
+      return response()->json([
+        'success' => true,
+        'content' => $content,
+        'count' => $all_adverts
+      ]);
     }
+
+    return response()->json([
+      'success' => false
+    ]);
+  }
+
 }

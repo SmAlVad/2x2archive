@@ -11,7 +11,7 @@
   align-items: center
   font-size: 1.5rem
 
-.adv-search-form
+#adv-search-form
   flex-basis: 95%
   display: flex
   justify-content: space-around
@@ -53,15 +53,23 @@
       cursor: pointer
       background-color: $appBlue
 
+#search-result
+  width: 100%
+
 .adv-search-result
+  min-height: 500px
+
+.search-result-table
+  width: 100%
 
 .empty-result
   text-align: center
 
 .adv-search-explain
   text-align: center
-  min-height: 550px
-  display: flex
-  justify-content: center
-  align-items: center
 
+#ajax-loader
+  display: none
+
+#scroll-ajax-loader
+  display: none

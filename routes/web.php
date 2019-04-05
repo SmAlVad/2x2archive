@@ -39,6 +39,7 @@ Route::group(['prefix' => 'advert', 'middleware' => ['auth', 'user-has-time']], 
     Route::get('/', 'AdvertController@index')->name('advert-index');
     Route::get('section/{section_id}/type/{type_id}', 'AdvertController@page')->name('advert-page');
     Route::get('section/{section_id}/type/{type_id}/search', 'AdvertController@search')->name('advert-search');
+    Route::get('ajax-search', 'AdvertController@ajax_search');
 });
 
 // Страницы газет
