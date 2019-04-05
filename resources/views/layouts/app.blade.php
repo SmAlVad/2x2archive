@@ -25,6 +25,8 @@
       архивы области,
       смотреть архив">
 
+    <meta name="yandex-verification" content="509fddfd60d0dbf9" />
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
