@@ -20,7 +20,7 @@
 Route::get('/', 'IndexController@index')->name('index');
 
 // Стандартная авторизация, регистрация
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 // Домашняя страница пользователя
 Route::group(['prefix'=>'home'], function () {
@@ -35,7 +35,7 @@ Route::get('/no-access', function () {
 });
 
 // Страницы обьявлений
-Route::group(['prefix' => 'advert', 'middleware' => ['auth', 'user-has-time']], function () {
+Route::group(['prefix' => 'advert', 'middleware' => ['auth', 'verified', 'user-has-time']], function () {
     Route::get('/', 'AdvertController@index')->name('advert-index');
     Route::get('section/{section_id}/type/{type_id}', 'AdvertController@page')->name('advert-page');
     Route::get('section/{section_id}/type/{type_id}/search', 'AdvertController@search')->name('advert-search');
@@ -43,7 +43,7 @@ Route::group(['prefix' => 'advert', 'middleware' => ['auth', 'user-has-time']], 
 });
 
 // Страницы газет
-Route::group(['prefix' => 'paper', 'middleware' => ['auth', 'user-has-time']], function () {
+Route::group(['prefix' => 'paper', 'middleware' => ['auth', 'verified', 'user-has-time']], function () {
     Route::get('/', 'PaperController@index')->name('paper-index');
     Route::get('/search', 'PaperController@search')->name('paper-search');
     Route::get('/show/{id}', 'PaperController@show')->name('paper-show');
@@ -52,7 +52,7 @@ Route::group(['prefix' => 'paper', 'middleware' => ['auth', 'user-has-time']], f
 // Страницы покупки ключа
 Route::group(['prefix' => 'payment'], function () {
     Route::get('/', 'PaymentController@index')->name('payment-index');
-    Route::get('/confirm', 'PaymentController@confirm')->name('payment-confirm')->middleware('auth');
+    Route::get('/confirm', 'PaymentController@confirm')->name('payment-confirm')->middleware('auth', 'verified');
     Route::post('/bill', 'PaymentController@bill')->name('payment-bill');
     Route::post('/result', 'PaymentController@result')->name('payment-result');
     Route::post('/success', 'PaymentController@success')->name('payment-success');
@@ -109,6 +109,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
     // Пользователи - Users
     Route::resource('/user', 'UserController', ['as' => 'admin']);
+    Route::patch('/user/verified_email/{user_id}', 'UserController@verifiedEmail')->name('admin.user.verified-email');
 
     // Импорт обьявлений - Csfd import
     Route::get('/csfd', 'CsfdController@index')->name('admin-csfd-index');

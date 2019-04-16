@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -14,7 +15,7 @@ class UserController extends Controller
     {
         $this->middleware('permission:user-list');
         $this->middleware('permission:user-create', ['only' => ['create','store']]);
-        $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:user-edit', ['only' => ['edit','update', 'verified_email']]);
         $this->middleware('permission:user-delete', ['only' => ['destroy']]);
     }
 
@@ -133,5 +134,24 @@ class UserController extends Controller
         return redirect()
             ->route('admin.user.index')
             ->with('success', 'Пользователь успешно удален');
+    }
+
+
+  /**
+   * Verify user e-mail
+   *
+   * @param  int $user_id
+   * @return \Illuminate\Http\Response
+   */
+    public function verifiedEmail($user_id)
+    {
+      $user = User::find($user_id);
+
+      $user->email_verified_at = Carbon::now();
+      $user->save();
+
+      return redirect()
+        ->route('admin.user.index')
+        ->with('success', 'Данные пользователя успешно обновлены');
     }
 }

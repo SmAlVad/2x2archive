@@ -1,24 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+  {{-- Хлебные крошки --}}
+  <ul class="app-breadcrumb">
+    <li class="app-breadcrumb-item">
+      <a href="{{ route('index') }}">Главная</a>
+    </li>
+    <li class="app-breadcrumb-active">
+      Подтвердите адрес электронной почты
+    </li>
+  </ul>
+
+  <div class="container" id="verify-page">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            @if (session('resent'))
+              <div class="alert alert-success" role="alert">
+                Новое сообщение для подтверждения электронной почты было выслано
+              </div>
+            @endif
 
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
-                        </div>
-                    @endif
+            <p>Для продолжения работы, необходимо подтвердить адрес электронной почты.</p>
+            <p>
+              Если вы не получали письмо для подтвеждения, <a href="{{ route('verification.resend') }}">нажмите
+                здесь</a> для повторной отправки сообщения.
+            </p>
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 @endsection

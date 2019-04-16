@@ -7,7 +7,7 @@
             <a href="{{ route('index') }}">Главная</a>
         </li>
         <li class="app-breadcrumb-active">
-            Обьявления
+            Объявления
         </li>
     </ul>
 
@@ -41,7 +41,7 @@
                 <div class="wrapper-advert-category">
                     <div class="advert-category">
                         <div class="advert-category-item"><i class="fas fa-city"></i></div>
-                        <div class="advert-category-title"><h4>Коммерческая недвижемость. Бизнес</h4></div>
+                        <div class="advert-category-title"><h4>Коммерческая недвижимость. Бизнес</h4></div>
                     </div>
                     <div class="advert-category-list-items">
                         <ul>

@@ -10,14 +10,14 @@
             <a href="{{ route('payment-index') }}">Купить ключ</a>
         </li>
         <li class="app-breadcrumb-active">
-            Подтвеждение
+            Подтверждение
         </li>
     </ul>
 
     <div class="container mb-5" id="payment-confirm-block">
         <div class="row">
             <div class="col-xl-12">
-                <h2>Подтвержденине</h2>
+                <h2>Подтверждение</h2>
                 <p>
                     После успешной оплаты вы попадете в Личный кабинет. Там вы сможете активировать ключ доступа.
                 </p>
