@@ -1,2 +1,10 @@
 User-agent: *
-Disallow:
+
+Disallow: /auth
+Disallow: /admin
+Disallow: /register
+Disallow: /password
+Disallow: /password/reset
+Disallow: /home
+
+Sitemap: http://archive.2x2.su/sitemap.xml
