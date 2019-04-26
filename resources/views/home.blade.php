@@ -173,13 +173,13 @@
                     @endif
                   </td>
                   <td>
-                    <a href="{{ route('admin.accounts.print_acc', $account->id) }}">
+                    <a href="{{ route('home.print_acc', $account->id) }}" target="_blank">
                       Распечатать
                     </a>
                   </td>
                   <td>
                     @if($account->is_paid)
-                      <a href="{{ route('admin.accounts.print_act', $account->id) }}">
+                      <a href="{{ route('home.print_act', $account->id) }}" target="_blank">
                         Распечатать
                       </a>
                     @endif

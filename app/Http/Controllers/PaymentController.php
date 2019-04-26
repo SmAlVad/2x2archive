@@ -167,7 +167,7 @@ class PaymentController extends Controller
     /**
      * Выставление счета
      *
-     * @param Request $request
+     * @param PaymentBillRequest $request
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */

@@ -79,4 +79,30 @@ class HomeController extends Controller
         return redirect()->route('home')
             ->with('error', "Ошибка");
     }
+
+  /**
+   * Вывод отображения для печати счета
+   *
+   * @param $id
+   * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+   */
+  public function print_acc($id)
+  {
+    $account = Account::find($id);
+
+    return view('print_acc', compact('account'));
+  }
+
+  /**
+   * Вывод отображения для печати акта
+   *
+   * @param $id
+   * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+   */
+  public function print_act($id)
+  {
+    $account = Account::find($id);
+
+    return view('print_act', compact('account'));
+  }
 }

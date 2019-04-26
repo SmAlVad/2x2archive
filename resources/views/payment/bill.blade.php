@@ -19,7 +19,7 @@
             <div class="col-xl-6">
                 <h3>Внесите данные вашей организации для выставления счета</h3>
 
-                @include('admin.partials.errors')
+                @include('partials.errors')
 
                 {!! Form::open(['route' => 'payment-bill', 'method' => 'POST']) !!}
                 {!! Form::hidden('rate', $rate->id) !!}
