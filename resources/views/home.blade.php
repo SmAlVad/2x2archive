@@ -155,9 +155,11 @@
               </thead>
               <tbody>
               @foreach($accounts as $account)
-                <tr>
+                <tr @if($account->is_cancelled)style="opacity: .3;" @endif>
                   <td>
-                    @if($account->is_paid)
+                    @if($account->is_cancelled)
+                      <div class="text-danger"><i class="far fa-times-circle"></i></div>
+                    @elseif($account->is_paid)
                       <div class="text-success"><i class="fas fa-check-circle"></i></div>
                     @else
                       <div class="text-muted"><i class="fas fa-times-circle"></i></div>
@@ -166,19 +168,24 @@
                   <td>И{{ $account->number }}</td>
                   <td>{{ $account->created_at }}</td>
                   <td>{{ $account->rate->price }}</td>
-                  <td> @if($account->is_paid)
+                  <td>
+                    @if($account->is_cancelled)
+                      аннулирован
+                    @elseif($account->is_paid)
                       оплачен
                     @else
                       не оплачен
                     @endif
                   </td>
                   <td>
-                    <a href="{{ route('home.print_acc', $account->id) }}" target="_blank">
-                      Распечатать
-                    </a>
+                    @if(!$account->is_cancelled)
+                      <a href="{{ route('home.print_acc', $account->id) }}" target="_blank">
+                        Распечатать
+                      </a>
+                    @endif
                   </td>
                   <td>
-                    @if($account->is_paid)
+                    @if($account->is_paid && !$account->is_cancelled)
                       <a href="{{ route('home.print_act', $account->id) }}" target="_blank">
                         Распечатать
                       </a>

@@ -88,7 +88,7 @@ class AccountController extends Controller
   {
     $account = Account::find($id);
 
-    return view('admin.account.print_acc', compact('account'));
+    return view('print_acc', compact('account'));
   }
 
   /**
@@ -101,7 +101,7 @@ class AccountController extends Controller
   {
     $account = Account::find($id);
 
-    return view('admin.account.print_act', compact('account'));
+    return view('print_act', compact('account'));
   }
 
   /**

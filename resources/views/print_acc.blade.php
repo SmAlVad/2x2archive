@@ -52,24 +52,24 @@
     <td>2801088466 / 280101001</td>
   </tr>
   <tr>
-    <td>Банк:</td>
-    <td>Филиал 2754 ВТБ 24 (ЗАО) г. Хабаровск</td>
+    <td>банк:</td>
+    <td>Филиал № 2754 Банка ВТБ (ПАО)</td>
   </tr>
   <tr>
-    <td>Счет №</td>
-    <td>40702810809560001367 БИК/код МФО 040813827</td>
+    <td>р/сч №:</td>
+    <td>40702810809560001367 БИК/код МФО 040813713</td>
   </tr>
   <tr>
-    <td>К/С:</td>
-    <td>30101810300000000827</td>
+    <td>к/сч:</td>
+    <td>30101810708130000713</td>
   </tr>
   <tr>
-    <td>Адрес:</td>
-    <td>675000 Амурская область г.Благовещенск, ул. Б.Хмельницкого 20</td>
+    <td>адрес:</td>
+    <td>675000, Амурская область, г. Благовещенск , ул. Зейская, 229</td>
   </tr>
   <tr>
     <td>тел./факс:</td>
-    <td>20-19-39, 20-00-20</td>
+    <td>(4162) 20-19-21</td>
   </tr>
   </tbody>
 </table>
@@ -85,23 +85,23 @@
     <td colspan="3">{{ $account->requisite->inn }}&nbsp;/&nbsp;{{ $account->requisite->kpp }}</td>
   </tr>
   <tr>
-    <td>Банк:</td>
+    <td>банк:</td>
     <td colspan="3">{{ $account->requisite->bank }}</td>
   </tr>
   <tr>
-    <td>Счет №</td>
-    <td>{{ $account->number }}</td>
+    <td>р/сч №:</td>
+    <td>{{ $account->requisite->ks }}</td>
   </tr>
   <tr>
-    <td>БИК/код МФО</td>
+    <td>БИК/код МФО:</td>
     <td>{{ $account->requisite->bik }}</td>
   </tr>
   <tr>
-    <td>К/С:</td>
+    <td>к/сч:</td>
     <td colspan="3">{{ $account->requisite->ks }}</td>
   </tr>
   <tr>
-    <td>Адрес:</td>
+    <td>адрес:</td>
     <td colspan="3">{{ $account->requisite->address }}</td>
   </tr>
   <tr>
@@ -126,7 +126,7 @@
     <td>1</td>
     <td>&nbsp;</td>
     <td>Покупка подписки на сайте archive.2x2.su на {{ $account->rate->time }}ч.</td>
-    <td>&nbsp;</td>
+    <td>шт</td>
     <td>1</td>
     <td>{{ $account->rate->price }}</td>
     <td>{{ $account->rate->price }}</td>
